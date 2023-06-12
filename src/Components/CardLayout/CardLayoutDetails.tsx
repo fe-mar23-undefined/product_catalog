@@ -6,10 +6,10 @@ interface Props {
 
 export const CardLayoutDetails: React.FC<Props> = ({ phone }) => {
 
-const {id, image, capacity, price, fullPrice, screen, ram, name} = phone;
+const {image, capacity, price, fullPrice, screen, ram, name} = phone;
 
 return (
-    <div className="card-product">
+    <section className="card-product">
     <div className="card-product__container">
 
       <img className="card-product__image"
@@ -67,6 +67,6 @@ return (
 
       </div>
     </div>
-  </div>
+  </section>
 )
 };
