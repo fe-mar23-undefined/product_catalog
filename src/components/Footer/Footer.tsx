@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
         </nav>
         <div className="footer__backtotop">
           <a href="#top" className="footer__backtotop__text">Back to top</a>
-          <button className="footer__backtotop__button">&#62;</button>
+          <a href="#top" className="footer__backtotop__button">&#62;</a>
         </div>
     </footer>
   )
