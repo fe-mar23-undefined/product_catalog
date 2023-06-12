@@ -1,26 +1,49 @@
+@import "../../utils/mixins";
+
 $primary-color: #313237;
 $secondary-color: #89939A;
+$icon-color: #B4BDC3;
 
 body {
     margin: 0;
 }
 
 .footer {
+    padding: 32px 16px 32px 16px;
     width: 100%;
+    box-sizing: border-box;
+
+    @include tablet {
+        display: flex;
+        justify-content: space-around;
+    }
     &__nav {
-        &__link {
+        padding: 0;
+        &__li {
+            margin-bottom: 16px;
             list-style-type: none;
-            color: $secondary-color;
             font-weight: 700;
             font-size: 12px;
             line-height: 11px;
             letter-spacing: 0.04em;
             text-transform: uppercase;
+            text-decoration: none;
+
+            @include tablet {
+                display: inline;
+                padding: 0 8px 0 8px;
+            }
+        }
+
+        &__link {
+            text-decoration: none;
+            color: $secondary-color;
         }
     }
     &__backtotop {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
         margin-left: auto;
         margin-right: auto;
         width: 50%;
@@ -29,6 +52,10 @@ body {
         letter-spacing: 0;
         font-weight: 500;
 
+        @include tablet {
+            margin: 0;
+            width: auto;
+        }
 
         &__text {
             text-decoration: none;
@@ -39,6 +66,12 @@ body {
             text-decoration: none;
             color: $primary-color;
             transform: rotate(-90deg);
+            height: 32px;
+            width: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $icon-color;
         }
     }
 }
