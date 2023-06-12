@@ -4,10 +4,12 @@ import { HomePage } from "./pages/HomePage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { PhonesPage } from "./pages/PhonesPage";
 import { TabletsPage } from "./pages/TabletsPage";
+import { Header } from "./components/header/Header";
 
 export const App = () => {
   return (
     <div className="App">
+      <Header />
       <div className="main">
         <Routes>
           <Route path="/" element={<HomePage />} />
