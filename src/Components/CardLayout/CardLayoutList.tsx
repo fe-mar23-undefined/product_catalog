@@ -18,7 +18,11 @@ export const CardLayoutList = () => {
         return (
             <>
               {productData.map((phone) => (
-                <CardLayoutDetails phone={phone} key={phone.id}/>
+                <CardLayoutDetails
+                  phone={phone}
+                  key={phone.id}
+                  isFullPrices={false}
+                />
               ))}
             </>
           );

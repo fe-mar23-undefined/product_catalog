@@ -1,0 +1,74 @@
+.card-product {
+    max-width: 227px;
+    border: 3px;
+    padding: 32px;
+
+    &__image {
+        width: 208px;
+        height: 196px;
+        object-fit: contain;
+    }
+
+    &__desription {
+        padding-top: 24px;
+        text-align: center;
+    }
+
+    &__details {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 8px;
+    }
+
+    &__add-prod-to-card {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__price {
+        color: #313237;
+        font-size: 22px;
+    }
+    &__full-price {
+        color: #89939a;
+        font-size: 22px;
+        text-decoration: line-through;
+        padding-left: 8px;
+    }
+
+    &__prod-details-description {
+        color: #89939a;
+    }
+
+    &__prod-details {
+        color: #313237;
+    }
+
+    &__line {
+        height: 1px;
+        width: auto;
+        background-color: #e2e6e9;
+        margin-top: 8px;
+    }
+
+    &__add-to-card {
+        background-color: #313237;
+        color: #ffffff;
+        width: 140px;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    &__add-prod-to-card {
+        padding-top: 16px;
+    }
+
+    &__save-product {
+        width: 40px;
+        height: 40px;
+        background-image: url('../../Icon//btn-icon/heart.png');
+    }
+}
+

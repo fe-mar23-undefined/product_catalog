@@ -1,12 +1,17 @@
+
 import { Phone } from '../../types/Phone';
+
+import '../../Components/CardLayout/CardLayoutStyle.scss'
 
 interface Props {
   phone: Phone;
+  isFullPrices: boolean;
 }
 
-export const CardLayoutDetails: React.FC<Props> = ({ phone }) => {
+export const CardLayoutDetails: React.FC<Props> = ({ phone, isFullPrices }) => {
 
-const {image, capacity, price, fullPrice, screen, ram, name} = phone;
+const {image, phoneId, price, fullPrice, screen, ram, name, capacity} = phone;
+
 
 return (
     <section className="card-product">
@@ -16,35 +21,49 @@ return (
         src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
         alt={name}
       />
-
-      <div className="card-product__decription-block">
-        <p className="card-product__dexription">
-          {capacity}
+       <p className="card-product__desription">
+          {phoneId}
         </p>
+      <div className="card-product__price-details">
 
         <span className="card-product__price">
           ${price}
         </span>
-        <span className="card-product__full-price">
+        {isFullPrices && <span className="card-product__full-price">
           ${fullPrice}
-        </span>
+        </span>}
       </div>
 
+      <div className="card-product__line"></div>
+
       <div className="card-product__details">
-        <div className="card-product">
+
           <span className="card-product__prod-details-description">
-            screen
+            Screen
           </span>
 
           <span className="card-product__prod-details">
             {screen}
           </span>
 
-        </div>
+
       </div>
 
       <div className="card-product__details">
-        <div className="card-product">
+
+      <span className="card-product__prod-details-description">
+          Capacity
+      </span>
+
+      <span className="card-product__prod-details">
+        {capacity}
+      </span>
+
+
+</div>
+
+      <div className="card-product__details">
+
           <span className="card-product__prod-details-description">
             Ram
           </span>
@@ -53,20 +72,27 @@ return (
             {ram}
           </span>
 
-        </div>
+
       </div>
 
       <div className="card-product__add-prod-to-card">
-        <a href="#">
+        <a className="card-product__add-to-card" href="#">
           Add to card
         </a>
 
-        <button type="button">
-          ikonka
-        </button>
+        <a
+          href="#"
+          className="card-product__save-product"
+          type="button">
+        </a>
+
 
       </div>
     </div>
   </section>
 )
+};
+
+CardLayoutDetails.defaultProps = {
+  isFullPrices: false,
 };
