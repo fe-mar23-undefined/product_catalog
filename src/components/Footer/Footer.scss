@@ -1,0 +1,15 @@
+.footer {
+    width: 100%;
+    &__nav {
+        &__link {
+            list-style-type: none;
+        }
+    }
+    &__backtotop {
+        display: flex;
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+}
