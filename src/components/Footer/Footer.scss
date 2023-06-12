@@ -1,8 +1,21 @@
+$primary-color: #313237;
+$secondary-color: #89939A;
+
+body {
+    margin: 0;
+}
+
 .footer {
     width: 100%;
     &__nav {
         &__link {
             list-style-type: none;
+            color: $secondary-color;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 11px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
     }
     &__backtotop {
@@ -11,5 +24,21 @@
         margin-left: auto;
         margin-right: auto;
         width: 50%;
+        line-height: 15px;
+        font-size: 12px;
+        letter-spacing: 0;
+        font-weight: 500;
+
+
+        &__text {
+            text-decoration: none;
+            color: $secondary-color;
+        }
+
+        &__button {
+            text-decoration: none;
+            color: $primary-color;
+            transform: rotate(-90deg);
+        }
     }
 }
