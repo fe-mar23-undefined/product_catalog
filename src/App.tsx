@@ -6,7 +6,6 @@ import { PhonesPage } from "./pages/PhonesPage";
 import { TabletsPage } from "./pages/TabletsPage";
 import { Header } from "./components/header/Header";
 
-import './App.scss';
 
 export const App = () => {
   return (

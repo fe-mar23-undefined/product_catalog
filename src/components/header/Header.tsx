@@ -10,9 +10,10 @@ export const Header = () => (
           <br />
           GADGETS
         </div>
+
         <nav className="nav">
           <NavLink
-            to="/home"
+            to="/"
             className={({ isActive }) =>
               isActive ? 'nav__item is-active' : 'nav__item'
             }
@@ -47,6 +48,7 @@ export const Header = () => (
             <div className="header__element__text">ACCESSORIES</div>
           </NavLink>
         </nav>
+
       </div>
     </div>
     <div className="header__section--1">
@@ -75,4 +77,3 @@ export const Header = () => (
   </div>
 );
 
-</div>
