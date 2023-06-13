@@ -75,6 +75,8 @@ body {
     }
 
     &--cart {
+      width: 100%;
+      height: 100%;
       box-shadow: -1px 0px 0px #E2E6E9;
 
       @include phone {
@@ -166,6 +168,12 @@ body {
 
   &__cart {
     height: 16px;
+    width: 16px;
+  }
+
+  &__heart {
+    height: 16px;
+    width: 15px;
   }
 }
 
@@ -177,6 +185,7 @@ body {
 
   &__item {
     text-decoration: none;
+    height: 100%;
 
     &__is-active {
       text-decoration: underline;
