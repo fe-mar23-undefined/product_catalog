@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import './CardPage.scss'
+import './CartPage.scss'
 
 export const CartPage = () => {
     return (
