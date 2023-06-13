@@ -1,1 +1,0 @@
-export const Card = () => <h1>Accessories Item</h1>
