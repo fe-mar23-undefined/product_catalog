@@ -52,28 +52,45 @@ export const Header = () => (
       </div>
     </div>
     <div className="header__section--1">
-      <div className="header__element--heart">
-        <img
-          className="icon__heart"
-          src={require('../../images/icons/Heart.svg').default}
-          alt="Heart Icon"
-        />
-      </div>
-      <div className="header__element--cart">
-        <img
-          className="icon__cart"
-          src={require('../../images/icons/Cart.svg').default}
-          alt="Cart Icon"
-        />
-      </div>
-      <div className="header__element__list">
-        <img
-          className="icon__list"
-          src={require('../../images/icons/List.svg').default}
-          alt="List Icon"
-        />
-      </div>
+
+    <NavLink
+      to="/favourites"
+      className={({ isActive }) =>
+      isActive ? 'nav__item is-active' : 'nav__item'
+      }
+    >
+    <div className="header__element--heart">
+      <img
+        className="icon__heart"
+        src={require('../../images/icons/Heart.svg').default}
+        alt="Heart Icon"
+      />
+    </div>
+    </NavLink>
+
+    <NavLink
+      to="/cart"
+      className={({ isActive }) =>
+      isActive ? 'nav__item is-active' : 'nav__item'
+      }
+    >
+    <div className="header__element--cart">
+      <img
+        className="icon__cart"
+        src={require('../../images/icons/Cart.svg').default}
+        alt="Cart Icon"
+      />
+    </div>
+    </NavLink>
+
+    <div className="header__element__list">
+      <img
+        className="icon__list"
+        src={require('../../images/icons/List.svg').default}
+        alt="List Icon"
+      />
     </div>
   </div>
+</div>
 );
 
