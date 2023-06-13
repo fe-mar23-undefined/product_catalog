@@ -1,0 +1,38 @@
+.phones-page {
+  margin: 24px 16px 0;
+
+  &__title {
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    color: #89939A;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #89939A;
+  }
+
+  &__homeImg {
+    margin-right: 15px;
+  }
+
+  &__arrowImg {
+    margin-right: 13px;
+  }
+}
+
+.pagination {
+  display: flex;
+
+  
+}
