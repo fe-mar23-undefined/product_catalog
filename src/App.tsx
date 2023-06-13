@@ -8,6 +8,8 @@ import { Header } from "./components/Header/Header";
 import { CartPage } from "./pages/CartPage";
 import { FavouritesPage } from "./pages/FavouritesPage";
 
+import './App.scss';
+import { Footer } from "./components/Footer";
 
 
 export const App = () => {
@@ -18,7 +20,9 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<Navigate to="/" />} />
-          <Route path="/phones" element={<PhonesPage />} />
+          <Route path="/phones" element={<PhonesPage />}>
+            <Route path=":id" element={<PhonesPage />} />
+          </Route>
           <Route path="/tablets" element={<TabletsPage />} />
           <Route path="/accessories" element={<AccessoriesPage />} />
           <Route path="/cart" element={<CartPage />} />
@@ -26,6 +30,7 @@ export const App = () => {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };
