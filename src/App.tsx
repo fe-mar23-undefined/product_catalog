@@ -4,7 +4,7 @@ import { HomePage } from "./pages/HomePage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { PhonesPage } from "./pages/PhonesPage";
 import { TabletsPage } from "./pages/TabletsPage";
-import { CardPage } from "./pages/CardPage";
+import { CartPage } from "./pages/CartPage";
 
 
 import './App.scss';
@@ -19,7 +19,7 @@ export const App = () => {
           <Route path="/phones" element={<PhonesPage />} />
           <Route path="/tablets" element={<TabletsPage />} />
           <Route path="/accessories" element={<AccessoriesPage />} />
-          <Route path="/card" element={<CardPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
