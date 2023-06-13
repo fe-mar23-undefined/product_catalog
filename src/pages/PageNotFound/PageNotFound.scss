@@ -1,0 +1,67 @@
+@import "../../utils/mixins";
+@import "../../utils/normalize";
+@import "../../utils/reset";
+
+.not-found-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Mont';
+    min-width: 320px;
+
+    &__error-code {
+        text-transform: uppercase;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 2px;
+        font-size: 100px;
+        margin: 0;
+
+        @include tablet {
+            font-size: 172px;
+        }
+
+        @include desktop {
+            font-size: 172px;
+        }
+
+    }
+
+    &__title {
+        text-transform: capitalize;
+        font-size: 48px;
+        margin: 10px;
+        text-align: center;
+        padding: 0 16px;
+
+        @include tablet {
+            font-size: 64px;
+        }
+
+        @include desktop {
+            font-size: 64px;
+        }
+    }
+
+    &__message {
+        text-align: center;
+        padding: 0 16px;
+        max-width: 600px;
+    }
+
+    &__back-to-home {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 9.5px 60.5px;
+        color: #fff;
+        background: #313237;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
