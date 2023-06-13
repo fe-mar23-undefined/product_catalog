@@ -8,6 +8,8 @@ import { Header } from "./components/Header/Header";
 import { CartPage } from "./pages/CartPage";
 import { FavouritesPage } from "./pages/FavouritesPage";
 
+import './App.scss';
+import { Footer } from "./components/Footer";
 
 
 export const App = () => {
@@ -28,6 +30,7 @@ export const App = () => {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

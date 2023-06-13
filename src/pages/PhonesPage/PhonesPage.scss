@@ -8,6 +8,7 @@
 
   &__amount {
     color: #89939A;
+    margin-bottom: 32px;
   }
 }
 
@@ -34,5 +35,77 @@
 .pagination {
   display: flex;
 
+  &__sort {
+      margin-right: 16px;
   
+      &-text {
+        color: #89939A;
+        margin-bottom: 4px;
+      };
+  
+      &-select {
+        padding: 10px 12px;
+        width: 136px;
+        border: 1px solid #B4BDC4;
+        outline: none;
+      };
+    };
+  
+  &__perPage {
+    &-text {
+      color: #89939A;
+      margin-bottom: 4px;
+    };
+
+    &-select {
+      padding: 10px 12px;
+      width: 136px;
+      border: 1px solid #B4BDC4;
+      outline: none;
+      margin-bottom: 24px;
+    };
+  };
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+
+    &-item {
+      min-width: 32px;
+      height: 32px;
+      border: 1px solid #B4BDC4;
+      margin-right: 8px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--is-current {
+        background-color: #313237;
+        color: #fff;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+      padding: 5px;
+      display: flex;
+    }
+
+    &-next {
+      margin-left: 8px;
+    }
+
+    &-prev {
+      margin-right: 16px;
+    }
+
+    &-img--prev {
+      transform: rotate(180deg);
+    }
+
+  }
+
 }

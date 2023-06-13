@@ -110,9 +110,9 @@ export const PhonesPage = () => {
         <p className='phones-page__amount text'>{phones.length} models</p>
         <div className="pagination">
           <div className="pagination__sort">
-            <p className="pagination__sort-text">Sort by</p>
+            <p className="pagination__sort-text text--small">Sort by</p>
             <select 
-              className="pagination__sort-select"
+              className="pagination__sort-select text--buttons"
               id="sortSelector"
               value={sortValue}
               onChange={handleChangeSortValue}
@@ -123,9 +123,9 @@ export const PhonesPage = () => {
               </select>
           </div>
           <div className="pagination__perPage">
-            <p className="pagination__perPage-text">Items on page</p>
+            <p className="pagination__perPage-text text--small">Items on page</p>
             <select 
-              className="pagination__perPage-select"
+              className="pagination__perPage-select text--buttons"
               id="perPageSelector"
               value={perPageValue}
               onChange={handleChangePerPageValue}
@@ -143,26 +143,28 @@ export const PhonesPage = () => {
             </div>
           : <p>Error</p>
         }
-        <ul>
-          <li className={classNames('pagination__item', {
+        {pages(lastPage).length > 1 && <ul className="pagination__list">
+          <li className={classNames('pagination__list-item pagination__list-prev', {
             disabled: currentPage === 1,
           })}
           >
             <a 
-              className="pagination__link"
+              className="pagination__list-link"
               href='#/phones'
               onClick={handlePrevPage}
             >
-              prev
+              <svg className="pagination__list-img--prev" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" clipRule="evenodd" d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z" fill="currentColor"/>
+              </svg>
             </a>
           </li>
           {pages(lastPage).map(page => (
-            <li className={classNames('pagination__item', {
-            disabled: currentPage === 1,
+            <li className={classNames('pagination__list-item', {
+            'pagination__list-item--is-current': currentPage === page,
           })}
           >
             <a 
-              className="pagination__link"
+              className="pagination__list-link"
               href='#/phones'
               onClick={() => handleChangePage(page)}
             >
@@ -170,19 +172,22 @@ export const PhonesPage = () => {
             </a>
           </li>
           ))}
-          <li className={classNames('pagination__item', {
-            disabled: currentPage === 1,
+          <li className={classNames('pagination__list-item pagination__list-next', {
+            disabled: currentPage === lastPage,
           })}
           >
             <a 
-              className="pagination__link"
+              className="pagination__list-link"
               href='#/phones'
               onClick={handleNextPage}
             >
-              next
+              <svg className="pagination__list-img--next" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" clipRule="evenodd" d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z" fill="currentColor"/>
+              </svg>
             </a>
           </li>
         </ul>
+}
       </div>
     </>
   )
