@@ -4,7 +4,8 @@ import { HomePage } from "./pages/HomePage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { PhonesPage } from "./pages/PhonesPage";
 import { TabletsPage } from "./pages/TabletsPage";
-import './App.scss'
+
+import './App.scss';
 
 export const App = () => {
   return (

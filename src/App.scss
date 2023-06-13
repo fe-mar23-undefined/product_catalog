@@ -1,1 +1,7 @@
+@import "./utils/normalize.scss";
+@import "./utils/reset.scss";
 @import "./utils/mixins";
+
+.App {
+  min-width: 320px;
+}
