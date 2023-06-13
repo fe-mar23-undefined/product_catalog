@@ -1,0 +1,81 @@
+@import './mixins';
+
+.heading {
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+
+    &--h1 {
+        font-size: 48px;
+        line-height: 56px;
+        letter-spacing: -0.01em;
+
+        @include phone {
+            font-size: 32px;
+            line-height: 41px;
+        }
+    }
+
+    &--h2 {
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+
+        @include phone {
+            font-size: 22px;
+            line-height: 31px;
+            letter-spacing: 0;
+        }
+    }
+
+    &--h3 {
+        font-size: 22px;
+        line-height: 31px;
+        letter-spacing: 0;
+
+        @include phone {
+            font-size: 20px;
+            line-height: 26px;
+        }
+    }
+
+    &--h4 {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 26px;
+        letter-spacing: 0;
+
+        @include phone {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}
+
+.text {
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+
+    &--uppercase {
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    &--buttons {
+        font-weight: 700;
+    }
+
+    &--body {
+        font-weight: 600;
+    }
+
+    &--small {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
