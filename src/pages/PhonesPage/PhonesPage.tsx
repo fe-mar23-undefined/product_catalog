@@ -3,14 +3,13 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 import { getOnePhone, getPhones } from "../../api/phones";
 import { Phone } from "../../types/Phone";
 import './PhonesPage.scss';
-import arrowImg from '../../images/icons/arrow.png';
-import homeImg from '../../images/icons/home.png';
 import { SelectSort } from "../../components/Select/SelectSort";
 import { Select } from "../../components/Select/Select";
 import { CardLayout } from "../../components/CardLayout";
-import { useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { CardDetailsDescription } from "../../components/CardDetailsDescription";
 import { PhoneDetails } from "../../types/PhoneDetails";
+import { Breadcrumbs } from "../../components/Breadcrumbs";
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([])
@@ -21,6 +20,9 @@ export const PhonesPage = () => {
   const [selectedPhone, setSelectedPhone] = useState<PhoneDetails | null>(null)
   const { phoneId } = useParams();
 
+  const location = useLocation()
+
+  console.log(location)
   const loadSinglePhone = useCallback(async () => {
     try {
       if (phoneId) {
@@ -121,18 +123,13 @@ export const PhonesPage = () => {
   return (
     <>
       <div className='phones-page'>
-        <div className='phones-page__breadcrumbs breadcrumbs'>
-          <img
-            src={homeImg}
-            className="breadcrumbs__homeImg"
-            alt="img of home"
-          />
-          <img
-            src={arrowImg}
-            alt="arrow img"
-            className="breadcrumbs__arrowImg"
-          />
-          <p className="breadcrumbs__text">Phones</p>
+        <div className="breadcrumbs">
+          <div className="breadcrumbs__crumb">
+            <Link to='/' className="breadcrumbs__crumb-link">
+              <div className="breadcrumbs__crumb-link--home"></div>
+            </Link>
+          </div>
+          <Breadcrumbs item={selectedPhone} />
         </div>
         {phoneId && selectedPhone ? <CardDetailsDescription phone={selectedPhone}/>
           :

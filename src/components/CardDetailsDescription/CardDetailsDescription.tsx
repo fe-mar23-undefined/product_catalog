@@ -3,12 +3,18 @@ import { PhoneDetails } from '../../types/PhoneDetails';
 
 
 interface Props {
-    phone: PhoneDetails;
+  phone: PhoneDetails;
+}
+
+interface description {
+  title: string,
+  text: string[];
 }
 
 export const CardDetailsDescription: React.FC<Props> = ({ phone }) => {
-
   const {screen, resolution, processor, ram, camera, zoom, cell, description} = phone;
+
+  const cells = cell.map(item => `${item}`).join(', ');
 
 return (
 
@@ -20,10 +26,11 @@ return (
         About
       </h2>
 
-      {description.map((item: any, index: number) => (
-            <div className="card-details__element" key={index}>
+      {description.map((item: description) => (
+            <div className="card-details__element" key={item.title}>
               <h3 className="card-details__element-header">{item.title}</h3>
-              <p className="card-details__content">{item.text}</p>
+              {item.text.map((text: string) => (
+              <p className="card-details__content" key={text}>{text}</p>))}
             </div>
           ))}
 
@@ -72,7 +79,7 @@ return (
 
         <div className="card-details__phone-details">
             <span className="card-details__property">Cell</span>
-            <span className="card-details__specs">{cell},</span>
+            <span className="card-details__specs">{cells}</span>
         </div>
       </div>
       </div>
