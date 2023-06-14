@@ -2,17 +2,17 @@
 import { useState } from 'react';
 import { Phone } from '../../types/Phone';
 
-import '../../Components/CardLayout/CardLayoutStyle.scss'
+import './CardLayout.scss'
 
 interface Props {
   phone: Phone;
   isFullPrices: boolean;
 }
 
-export const CardLayoutDetails: React.FC<Props> = ({ phone, isFullPrices }) => {
+export const CardLayout: React.FC<Props> = ({ phone, isFullPrices }) => {
   const { image, price, fullPrice, screen, ram, name, capacity } = phone;
   const [isSelected, setIsSelected] = useState(false);
-  const [isBasket, setIsBasket] = useState(false);
+  const [isBasket, setIsBasket] = useState(true);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();

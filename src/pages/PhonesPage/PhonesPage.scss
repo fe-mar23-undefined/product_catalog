@@ -1,6 +1,4 @@
 .phones-page {
-  margin: 24px 16px 0;
-
   &__title {
     font-weight: 800;
     margin-bottom: 8px;
@@ -11,6 +9,16 @@
     margin-bottom: 32px;
   }
 }
+
+.phones {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-row-gap: 16px;
+  justify-items: center;
+  align-items: center;
+}
+
 
 .breadcrumbs {
   display: flex;
