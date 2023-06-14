@@ -107,6 +107,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
       
       @include tablet {
         display: none;
@@ -120,6 +121,11 @@ body {
     &__text {
       font-size: 12px;
       font-weight: 800;
+      transition: 0.4s;
+
+      &:hover {
+        color: #313237;
+      }
 
       @include phone {
         display: none;
@@ -169,11 +175,17 @@ body {
   &__cart {
     height: 16px;
     width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__heart {
     height: 16px;
     width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -185,10 +197,153 @@ body {
 
   &__item {
     text-decoration: none;
-    height: 100%;
+    padding: 16.5px 0 16.5px 0;
+    font-size: 12px;
+    font-weight: 800;
+    transition: 0.4s;
 
-    &__is-active {
+    &:hover,
+    &.is-active {
+      color: #313237;
+    }
+
+    @include phone {
+      display: none;
+    }
+
+    @include tablet {
+      margin-right: 32px;
+      color: #89939A;
+      text-align: center;
+    }
+
+    @include desktop {
+      margin-right: 64px;
+      color: #89939A;
+      text-align: center;
+      
+    }
+  }
+
+  &__item:hover,
+  .nav__item.is-active {
+    color: #313237;
+  }
+
+  .nav__item.is-active {
+    text-decoration: underline;
+    text-decoration-color: #313237;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 18px;
+
+    @include desktop {
+      text-underline-offset: 26px;
+    }
+  }
+
+  &__icon {
+    height: 48px;
+
+    @include desktop{
+      height: 64px;
+    }
+  } 
+}
+
+.burger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 0;
+  max-height: 100%;
+  width: 100%;
+  z-index: 1;
+  background: #fff;
+  transition-property: height;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  overflow-y: hidden;
+
+  &--open {
+    height: 100%;
+  }
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: none;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    box-shadow: 0px -1px 0px #E2E6E9;
+
+    &__box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 64px;
+      width: 50%;
+
+      &--1 {
+        box-shadow: -1px 0px 0px #E2E6E9;
+        width: 50%;
+      }
+      
+      &.is-active {
+        border-bottom: 2px solid #313237;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top: 48px;
+    left: 0;
+    width: 100%;
+  }
+
+  &__link {
+    margin-top: 32px;
+  }
+
+  &__item {
+    font-weight: 800;
+    text-decoration: none;
+    color: #89939A;
+
+    &.is-active {
+      color: #313237;
       text-decoration: underline;
-    } 
+      text-decoration-color: #313237;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 8px;
+    }
+  }
+
+  &__element--heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding: 19px 117px 21px 117px;
+  }
+
+  &__element--cart {
+    // padding: 19px 117px 21px 117px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
