@@ -1,6 +1,7 @@
 import'./CardDetaileDescription.scss';
 import { PhoneDetails } from '../../types/PhoneDetails';
 
+
 interface Props {
     phones: PhoneDetails;
 }
@@ -19,7 +20,7 @@ return (
         About
       </h2>
 
-      {description.map((item: Props, index: number) => (
+      {description.map((item: any, index: number) => (
             <div className="card-details__element" key={index}>
               <h3 className="card-details__element-header">{item.title}</h3>
               <p className="card-details__content">{item.text}</p>

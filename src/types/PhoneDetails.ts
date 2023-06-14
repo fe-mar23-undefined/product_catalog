@@ -6,5 +6,5 @@ ram: string,
 camera:string,
 zoom: string,
 cell: string,
-description: string,
+description: [],
 }
