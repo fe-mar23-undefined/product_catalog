@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AccessoriesPage } from "./pages/AccessoriesPage";
 import { HomePage } from "./pages/HomePage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { PhonesPage } from "./pages/PhonesPage";
 import { TabletsPage } from "./pages/TabletsPage";
-import { Header } from "./components/Header/Header";
+import { Header } from "./components/Header";
 import { CartPage } from "./pages/CartPage";
 import { FavouritesPage } from "./pages/FavouritesPage";
 
@@ -13,9 +14,21 @@ import { Footer } from "./components/Footer";
 
 
 export const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(prevState => !prevState);
+  
+    if (isMenuOpen) {
+      console.log("Menu opened");
+    } else {
+      console.log("Menu closed");
+    }
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header onToggleMenu={handleMenuToggle} />
       <div className="main">
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -34,3 +47,4 @@ export const App = () => {
     </div>
   );
 };
+
