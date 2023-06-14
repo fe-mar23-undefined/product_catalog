@@ -1,0 +1,71 @@
+@import "../../utils/mixins";
+@import "../../utils/normalize";
+@import "../../utils/reset";
+
+.select__header {
+  margin-bottom: 4px;
+  padding: 10px 12px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #313237;
+  background: #ffffff;
+  border: 1px solid #B4BDC3;
+  width: 136px;
+  display: flex;
+  justify-content: space-between;
+
+  &--sort {
+    @include tablet {
+      width: 187px;
+    }
+  }
+
+
+  &--active {
+    border: 1px solid #313237;
+  }
+
+  &:focus {
+    border: 1px solid #313237;
+  }
+
+  svg {
+    transform: rotate(90deg);
+  }
+
+  svg.active {
+    transform: rotate(270deg);
+  }
+}
+
+.select__drop-down {
+  &__list {
+    padding: 0;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid #E2E6E9;
+    box-sizing: border-box;
+    color: #89939A;
+    width: 136px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    position: absolute;
+
+    &-item {
+      list-style: none;
+    }
+
+    &-link {
+      display: flex;
+      color: #89939A;
+      cursor: pointer;
+      padding: 6px 12px 5px;
+      text-decoration: none;
+
+      &:hover {
+        color: #313237;
+      }
+    }
+  }
+}

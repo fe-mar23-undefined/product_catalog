@@ -5,7 +5,8 @@ import { Phone } from "../../types/Phone";
 import './PhonesPage.scss';
 import arrowImg from '../../images/icons/arrow.png';
 import homeImg from '../../images/icons/home.png';
-
+import { Select } from "../../components/Select";
+import { SelectSort } from "../../components/Select/SelectSort";
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([])
   const [hasError, setHasError] = useState(false);
@@ -27,13 +28,17 @@ export const PhonesPage = () => {
     return numberedPages;
   }
 
-  
-  const handleChangeSortValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortValue(event.target.value);
+
+  const handleChangeSortValue = (option: string) => {
+    setSortValue(option);
   }
-  
-  const handleChangePerPageValue = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPerPageValue(+event.target.value)
+
+  const handleChangePerPageValue = (option: string) => {
+    if (option === 'All') {
+      setPerPageValue(phones.length)
+    } else {
+      setPerPageValue(+option)
+    }
     setCurrentPage(1);
   }
 
@@ -46,15 +51,15 @@ export const PhonesPage = () => {
       setHasError(true);
     }
   }
-  
+
   useEffect(() => {
     loadPhones();
   }, []);
-  
+
   const currentPhones = useMemo(() => {
     return phones.slice(indexOfFirstPhone, indexOfLastPhone);
   }, [indexOfFirstPhone, indexOfLastPhone, phones])
-  
+
   const handleNextPage = () => {
     setCurrentPage(prevPage => prevPage !== lastPage ? currentPage + 1 : currentPage)
   }
@@ -68,21 +73,21 @@ export const PhonesPage = () => {
   }
 
   const visiblePhones = useMemo(() => {
-    let phonesToSort = [...currentPhones];    
+    let phonesToSort = [...currentPhones];
 
     switch (sortValue) {
       case 'Newest':
         phonesToSort = phonesToSort
           .sort((phoneA, phoneB) => phoneB.year - phoneA.year);
-          break;
+        break;
       case 'Alphabetically':
         phonesToSort = phonesToSort
           .sort((phoneA, phoneB) => phoneA.name.localeCompare(phoneB.name));
-          break;
+        break;
       case 'Cheapest':
         phonesToSort = phonesToSort
           .sort((phoneA, phoneB) => phoneA.fullPrice - phoneB.fullPrice)
-          break;
+        break;
       default:
         break;
     }
@@ -94,13 +99,13 @@ export const PhonesPage = () => {
     <>
       <div className='phones-page'>
         <div className='phones-page__breadcrumbs breadcrumbs'>
-          <img 
-            src={homeImg} 
+          <img
+            src={homeImg}
             className="breadcrumbs__homeImg"
             alt="img of home"
-           />
-          <img 
-            src={arrowImg} 
+          />
+          <img
+            src={arrowImg}
             alt="arrow img"
             className="breadcrumbs__arrowImg"
           />
@@ -111,83 +116,69 @@ export const PhonesPage = () => {
         <div className="pagination">
           <div className="pagination__sort">
             <p className="pagination__sort-text text--small">Sort by</p>
-            <select 
-              className="pagination__sort-select text--buttons"
-              id="sortSelector"
+            <SelectSort 
               value={sortValue}
-              onChange={handleChangeSortValue}
-              >
-                <option value="Newest">Newest</option>
-                <option value="Alphabetically">Alphabetically</option>
-                <option value="Cheapest">Cheapest</option>
-              </select>
+              onChangeSortValue={handleChangeSortValue}
+            />
           </div>
           <div className="pagination__perPage">
             <p className="pagination__perPage-text text--small">Items on page</p>
-            <select 
-              className="pagination__perPage-select text--buttons"
-              id="perPageSelector"
-              value={perPageValue}
-              onChange={handleChangePerPageValue}
-              >
-                <option value={`${phones.length}`}>All</option>
-                <option value="16">16</option>
-                <option value="8">8</option>
-                <option value="4">4</option>
-              </select>
+            <Select 
+              value={perPageValue} 
+              onChangePerPageValue={handleChangePerPageValue}
+              length={phones.length}
+            />
           </div>
         </div>
-        {!hasError 
+        {!hasError
           ? <div className="phones">
-              {visiblePhones.map(phone => <div className="card" key={phone.id}>{phone.name} {phone.fullPrice} {phone.year}</div>)}
-            </div>
+            {visiblePhones.map(phone => <div className="card" key={phone.id}>{phone.name} {phone.fullPrice} {phone.year}</div>)}
+          </div>
           : <p>Error</p>
         }
         {pages(lastPage).length > 1 && <ul className="pagination__list">
-          <li className={classNames('pagination__list-item pagination__list-prev', {
-            disabled: currentPage === 1,
-          })}
-          >
-            <a 
-              className="pagination__list-link"
+          <li className="pagination__list-item pagination__list-prev">
+            <a
+              className={classNames('pagination__list-link', {
+                disabled: currentPage === 1,
+              })}
               href='#/phones'
               onClick={handlePrevPage}
             >
               <svg className="pagination__list-img--prev" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z" fill="currentColor"/>
+                <path className="pagination__list-img--prev--disabled" fillRule="evenodd" clipRule="evenodd" d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z" fill="currentColor" />
               </svg>
             </a>
           </li>
           {pages(lastPage).map(page => (
-            <li className={classNames('pagination__list-item', {
-            'pagination__list-item--is-current': currentPage === page,
-          })}
-          >
-            <a 
-              className="pagination__list-link"
-              href='#/phones'
-              onClick={() => handleChangePage(page)}
-            >
-              {page}
-            </a>
-          </li>
+            <li className="pagination__list-item">
+              <a
+                className={classNames('pagination__list-link', {
+                  'pagination__list-link--is-current': currentPage === page,
+                })}
+                href='#/phones'
+                onClick={() => handleChangePage(page)}
+              >
+                {page}
+              </a>
+            </li>
           ))}
-          <li className={classNames('pagination__list-item pagination__list-next', {
-            disabled: currentPage === lastPage,
-          })}
+          <li className="pagination__list-item pagination__list-next"
           >
-            <a 
-              className="pagination__list-link"
+            <a
+              className={classNames('pagination__list-link', {
+                disabled: currentPage === lastPage,
+              })}
               href='#/phones'
               onClick={handleNextPage}
             >
               <svg className="pagination__list-img--next" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z" fill="currentColor"/>
+                <path className="pagination__list-img--next--disabled " fillRule="evenodd" clipRule="evenodd" d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z" fill="currentColor" />
               </svg>
             </a>
           </li>
         </ul>
-}
+        }
       </div>
     </>
   )
