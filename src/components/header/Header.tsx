@@ -2,16 +2,13 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
-type HeaderProps = {
-  onToggleMenu: () => void;
-};
 
-export const Header = ({ onToggleMenu }: HeaderProps) => {
+
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    onToggleMenu();
   };
 
   return (

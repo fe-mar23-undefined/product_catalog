@@ -1,42 +1,48 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../context/GlovalContextProvider';
 import { Phone } from '../../types/Phone';
 
 import './CardLayout.scss'
 
 interface Props {
   phone: Phone;
-  isFullPrices: boolean;
 }
 
-export const CardLayout: React.FC<Props> = ({ phone, isFullPrices }) => {
-  const { image, price, fullPrice, screen, ram, name, capacity } = phone;
-  const [isSelected, setIsSelected] = useState(false);
-  const [isBasket, setIsBasket] = useState(true);
+export const CardLayout: React.FC<Props> = ({ phone }) => {
+  const { image, 
+    price, 
+    fullPrice, 
+    screen, 
+    ram, 
+    name, 
+    capacity,
+    phoneId,
+   } = phone;
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setIsSelected(!isSelected);
-  };
+  const {addToCart, addToFavourites, cart, favourites} = useGlobalContext();
 
-  const handleClickToBasket = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setIsBasket(!isBasket);
-  };
+  const isFavourited = favourites
+    .some(phoneToFind => phoneToFind.id === phone.id);
+
+  const isAddedToCart = cart
+    .some(phoneToFind => phoneToFind.id === phone.id);
 
   return (
     <div className="card-product">
       <div className="card-product__container">
         <div className="card-product__block">
-        <img
-          className="card-product__image"
-          src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
-          alt={name}
-        />
-        <p className="card-product__desription">{name}</p></div>
+          <img
+            className="card-product__image"
+            src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
+            alt={name}
+          />
+          <p  className="card-product__desription">
+            <Link to={`/phones/${phoneId}`}>{name}</Link></p>
+        </div>
         <div className="card-product__price-details">
           <span className="card-product__price">${price}</span>
-          {isFullPrices && <span className="card-product__full-price">${fullPrice}</span>}
+          {fullPrice && <span className="card-product__full-price">${fullPrice}</span>}
         </div>
         <div className="card-product__line"></div>
         <div className="card-product__details">
@@ -53,14 +59,15 @@ export const CardLayout: React.FC<Props> = ({ phone, isFullPrices }) => {
         </div>
         <div className="card-product__add-prod-to-card">
           <button
-            className={isBasket ? 'card-product__add-to-card' : 'card-product__add-to-card--active'}
-            onClick={handleClickToBasket}
+            className={isAddedToCart ? 'card-product__add-to-card--active' : 'card-product__add-to-card'}
+            onClick={() => addToCart(phone)}
+            disabled={isAddedToCart}
           >
-            {isBasket ? 'Add to card' : 'Added'}
+            {!isAddedToCart ? 'Add to card' : 'Added'}
           </button>
           <button
-            onClick={handleClick}
-            className={`card-product__save-product ${isSelected ? 'card-product__save-product--selection' : ''}`}
+            onClick={() => addToFavourites(phone)}
+            className={`card-product__save-product ${isFavourited ? 'card-product__save-product--selection' : ''}`}
           ></button>
         </div>
       </div>

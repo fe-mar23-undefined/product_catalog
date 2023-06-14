@@ -1,4 +1,5 @@
 import { Phone } from "../types/Phone"
+import { PhoneDetails } from "../types/PhoneDetails"
 import { service } from "../utils/service"
 
 export const getPhones = () => {
@@ -6,5 +7,5 @@ export const getPhones = () => {
 }
 
 export const getOnePhone = (phoneId: string) => {
-  return service.get<Phone>(`/phones/${phoneId}`)
+  return service.get<PhoneDetails>(`/phones/${phoneId}`)
 }

@@ -14,27 +14,16 @@ import { Footer } from "./components/Footer";
 
 
 export const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setIsMenuOpen(prevState => !prevState);
   
-    if (isMenuOpen) {
-      console.log("Menu opened");
-    } else {
-      console.log("Menu closed");
-    }
-  };
-
   return (
     <div className="App">
-      <Header onToggleMenu={handleMenuToggle} />
+      <Header />
       <div className="main">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<Navigate to="/" />} />
           <Route path="/phones" element={<PhonesPage />}>
-            <Route path=":id" element={<PhonesPage />} />
+            <Route path=":phoneId" element={<PhonesPage />} />
           </Route>
           <Route path="/tablets" element={<TabletsPage />} />
           <Route path="/accessories" element={<AccessoriesPage />} />

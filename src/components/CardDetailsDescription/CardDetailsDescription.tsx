@@ -1,14 +1,14 @@
-import'./CardDetaileDescription.scss';
+import'./CardDetailsDescription.scss';
 import { PhoneDetails } from '../../types/PhoneDetails';
 
 
 interface Props {
-    phones: PhoneDetails;
+    phone: PhoneDetails;
 }
 
-export const CardDetaileDescription: React.FC<Props> = ({ phones }) => {
+export const CardDetailsDescription: React.FC<Props> = ({ phone }) => {
 
-  const {screen, resolution, processor, ram, camera, zoom, cell, description} = phones;
+  const {screen, resolution, processor, ram, camera, zoom, cell, description} = phone;
 
 return (
 
@@ -74,10 +74,8 @@ return (
             <span className="card-details__property">Cell</span>
             <span className="card-details__specs">{cell},</span>
         </div>
-
       </div>
       </div>
-
     </div>
   </section>
 )
