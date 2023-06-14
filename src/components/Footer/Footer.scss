@@ -106,24 +106,20 @@ $elements-color: #E2E6E9;
     }
 
     &__text {
-      text-decoration: none;
       color: $secondary-color;
-
-      &:hover {
-        color: $primary-color;
-      }
     }
 
     &__button {
-      text-decoration: none;
       color: $primary-color;
       transform: rotate(-90deg);
+      background-color: #fff;
       height: 32px;
       width: 32px;
       display: flex;
       justify-content: center;
       align-items: center;
       border: 1px solid $icon-color;
+      cursor: pointer;
 
       &:hover {
         border-color: $primary-color;
