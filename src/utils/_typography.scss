@@ -1,10 +1,13 @@
 @import './mixins';
 
-.heading {
+%heading-shared {
     font-family: 'Mont', sans-serif;
     font-weight: 800;
+}
 
+.heading {
     &--h1 {
+        @extend %heading-shared;
         font-size: 48px;
         line-height: 56px;
         letter-spacing: -0.01em;
@@ -16,6 +19,7 @@
     }
 
     &--h2 {
+        @extend %heading-shared;
         font-size: 32px;
         line-height: 41px;
         letter-spacing: -0.01em;
@@ -28,6 +32,7 @@
     }
 
     &--h3 {
+        @extend %heading-shared;
         font-size: 22px;
         line-height: 31px;
         letter-spacing: 0;
@@ -39,6 +44,7 @@
     }
 
     &--h4 {
+        @extend %heading-shared;
         font-weight: 700;
         font-size: 20px;
         line-height: 26px;
@@ -51,13 +57,17 @@
     }
 }
 
-.text {
+%text-shared {
     font-family: 'Mont', sans-serif;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0;
+}
+
+.text {
 
     &--uppercase {
+        @extend %text-shared;
         font-size: 12px;
         font-weight: 800;
         line-height: 11px;
@@ -66,14 +76,17 @@
     }
 
     &--buttons {
+        @extend %text-shared;
         font-weight: 700;
     }
 
     &--body {
+        @extend %text-shared;
         font-weight: 600;
     }
 
     &--small {
+        @extend %text-shared;
         font-weight: 700;
         font-size: 12px;
         line-height: 15px;
