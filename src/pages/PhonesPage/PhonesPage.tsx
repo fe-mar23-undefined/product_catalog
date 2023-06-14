@@ -5,8 +5,10 @@ import { Phone } from "../../types/Phone";
 import './PhonesPage.scss';
 import arrowImg from '../../images/icons/arrow.png';
 import homeImg from '../../images/icons/home.png';
-import { Select } from "../../components/Select";
 import { SelectSort } from "../../components/Select/SelectSort";
+import { Select } from "../../components/Select/Select";
+import { CardLayout } from "../../components/CardLayout";
+
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([])
   const [hasError, setHasError] = useState(false);
@@ -131,9 +133,16 @@ export const PhonesPage = () => {
           </div>
         </div>
         {!hasError
-          ? <div className="phones">
-            {visiblePhones.map(phone => <div className="card" key={phone.id}>{phone.name} {phone.fullPrice} {phone.year}</div>)}
-          </div>
+          ? 
+          <div className="phones">
+            {visiblePhones.map(phone => 
+            <CardLayout 
+              phone={phone} 
+              isFullPrices={true} 
+              key={phone.phoneId}
+            />)}
+            </div>
+          
           : <p>Error</p>
         }
         {pages(lastPage).length > 1 && <ul className="pagination__list">
@@ -151,7 +160,7 @@ export const PhonesPage = () => {
             </a>
           </li>
           {pages(lastPage).map(page => (
-            <li className="pagination__list-item">
+            <li className="pagination__list-item" key={page}>
               <a
                 className={classNames('pagination__list-link', {
                   'pagination__list-link--is-current': currentPage === page,

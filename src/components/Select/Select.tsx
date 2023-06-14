@@ -45,7 +45,7 @@ export const Select: React.FC<Props> = ({
                 key={option}
               >
                 <a
-                  href='.'
+                  href='#/phones'
                   className='select__drop-down__list-link'
                   onClick={() => toggling(option)}
                 >

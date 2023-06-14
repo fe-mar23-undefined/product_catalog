@@ -44,7 +44,7 @@ export const SelectSort: React.FC<Props> = ({
 
               >
                 <a
-                  href='.'
+                  href='#/phones'
                   className='select__drop-down__list-link'
                   onClick={() => toggling(sortName)}
                 >
