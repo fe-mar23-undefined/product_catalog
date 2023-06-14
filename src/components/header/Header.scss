@@ -175,15 +175,17 @@ body {
   &__cart {
     height: 16px;
     width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__heart {
     height: 16px;
     width: 15px;
-  }
-
-  &__x {
-    margin-top: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -196,33 +198,47 @@ body {
   &__item {
     text-decoration: none;
     padding: 16.5px 0 16.5px 0;
-    text-decoration: underline;
-    text-decoration-color:transparent;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 18px;
-    transition: 0.6s;
-
-    @include desktop {
-      text-underline-offset: 27px;
-      padding: 24.5px 0 24.5px 0;
-    }
+    font-size: 12px;
+    font-weight: 800;
+    transition: 0.4s;
 
     &:hover,
-    .header__element__text:hover {
-      text-decoration: underline;
-      text-decoration-color:#313237;
-      text-decoration-thickness: 3px;
-      text-underline-offset: 18px;
-
-      @include desktop {
-        text-underline-offset: 27px;
-      }
+    &.is-active {
+      color: #313237;
     }
 
-    // &__is-active:hover {
-    //   text-decoration: underline;
-    //   color: red;
-    // }
+    @include phone {
+      display: none;
+    }
+
+    @include tablet {
+      margin-right: 32px;
+      color: #89939A;
+      text-align: center;
+    }
+
+    @include desktop {
+      margin-right: 64px;
+      color: #89939A;
+      text-align: center;
+      
+    }
+  }
+
+  &__item:hover,
+  .nav__item.is-active {
+    color: #313237;
+  }
+
+  .nav__item.is-active {
+    text-decoration: underline;
+    text-decoration-color: #313237;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 18px;
+
+    @include desktop {
+      text-underline-offset: 26px;
+    }
   }
 
   &__icon {
@@ -238,10 +254,19 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  height: 0;
+  max-height: 100%;
   width: 100%;
-  height: 100%;
-  z-index: 999;
+  z-index: 1;
   background: #fff;
+  transition-property: height;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  overflow-y: hidden;
+
+  &--open {
+    height: 100%;
+  }
 
   @include tablet {
     display: none;
@@ -253,7 +278,6 @@ body {
 
   &__bottom {
     display: flex;
-    justify-content: center;
     align-items: center;
     position: fixed;
     bottom: 0;
@@ -271,6 +295,11 @@ body {
 
       &--1 {
         box-shadow: -1px 0px 0px #E2E6E9;
+        width: 50%;
+      }
+      
+      &.is-active {
+        border-bottom: 2px solid #313237;
       }
     }
   }
@@ -278,7 +307,6 @@ body {
   &__links {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
     position: fixed;
@@ -289,6 +317,33 @@ body {
 
   &__link {
     margin-top: 32px;
-    color: #313237;
+  }
+
+  &__item {
+    font-weight: 800;
+    text-decoration: none;
+    color: #89939A;
+
+    &.is-active {
+      color: #313237;
+      text-decoration: underline;
+      text-decoration-color: #313237;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 8px;
+    }
+  }
+
+  &__element--heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding: 19px 117px 21px 117px;
+  }
+
+  &__element--cart {
+    // padding: 19px 117px 21px 117px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

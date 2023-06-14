@@ -31,7 +31,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
                 isActive ? 'nav__item is-active' : 'nav__item'
               }
             >
-              <div className="header__element__text">HOME</div>
+              HOME
             </NavLink>
 
             <NavLink
@@ -40,7 +40,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
                 isActive ? 'nav__item is-active' : 'nav__item'
               }
             >
-              <div className="header__element__text">PHONES</div>
+              PHONES
             </NavLink>
 
             <NavLink
@@ -49,7 +49,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
                 isActive ? 'nav__item is-active' : 'nav__item'
               }
             >
-              <div className="header__element__text">TABLETS</div>
+              TABLETS
             </NavLink>
 
             <NavLink
@@ -58,7 +58,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
                 isActive ? 'nav__item is-active' : 'nav__item'
               }
             >
-              <div className="header__element__text">ACCESSORIES</div>
+              ACCESSORIES
             </NavLink>
           </nav>
         </div>
@@ -103,7 +103,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
         </div>
       </div>
       {isMenuOpen && (
-        <div className="burger">
+        <div className={`burger ${isMenuOpen ? 'burger--open' : ''}`}>
           <div className="header">
 
             <div className="header__section">
@@ -118,9 +118,11 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
         
             <div className="header__section--1">
               <div className="header__element__list" onClick={toggleMenu}>
-                <div className="icon__x">
-                  X
-                </div>
+                <img
+                  className="icon__x"
+                  src={require('../../images/icons/x.svg').default}
+                  alt="List Icon"
+                />
               </div>
             </div>
           </div>
@@ -129,7 +131,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? 'nav__item is-active' : 'nav__item'
+                isActive ? 'burger__item is-active' : 'burger__item'
               }
             >
               <div className="burger__link" onClick={toggleMenu}>HOME</div>
@@ -138,7 +140,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
             <NavLink
               to="/phones"
               className={({ isActive }) =>
-                isActive ? 'nav__item is-active' : 'nav__item'
+                isActive ? 'burger__item is-active' : 'burger__item'
               }
             >
               <div className="burger__link" onClick={toggleMenu}>PHONES</div>
@@ -147,7 +149,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
             <NavLink
               to="/tablets"
               className={({ isActive }) =>
-                isActive ? 'nav__item is-active' : 'nav__item'
+                isActive ? 'burger__item is-active' : 'burger__item'
               }
             >
               <div className="burger__link" onClick={toggleMenu}>TABLETS</div>
@@ -156,19 +158,18 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
             <NavLink
               to="/accessories"
               className={({ isActive }) =>
-                isActive ? 'nav__item is-active' : 'nav__item'
+                isActive ? 'burger__item is-active' : 'burger__item'
               }
             >
               <div className="burger__link" onClick={toggleMenu}>ACCESSORIES</div>
             </NavLink>
           </div>
 
-          <div className='burger__bottom'>
-            <div className='burger__bottom__box'>
+          <div className="burger__bottom">
               <NavLink
                 to="/favourites"
                 className={({ isActive }) =>
-                  isActive ? 'burger__item is-active' : 'burger__item'
+                  isActive ? 'burger__bottom__box is-active' : 'burger__bottom__box'
                 }
               >
                 <div className="burger__element--heart" onClick={toggleMenu}>
@@ -179,13 +180,11 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
                   />
                 </div>
               </NavLink>
-            </div>
 
-            <div className="burger__bottom__box burger__bottom__box--1">
               <NavLink
                 to="/cart"
                 className={({ isActive }) =>
-                  isActive ? 'burger__item is-active' : 'burger__item'
+                  isActive ? 'burger__bottom__box burger__bottom__box--1 is-active' : 'burger__bottom__box--1'
                 }
               >
                 <div className="burger__element--cart" onClick={toggleMenu}>
@@ -196,10 +195,7 @@ export const Header = ({ onToggleMenu }: HeaderProps) => {
                   />
                 </div>
               </NavLink>
-            </div>
-
           </div>
-          
         </div>
       )}
     </div>
