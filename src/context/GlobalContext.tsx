@@ -7,7 +7,6 @@ interface GlobalContextProps {
   addToCart: (phone: Phone) => void;
   removeFromCart: (phone: Phone) => void;
   addToFavourites: (phone: Phone) => void;
-  removeFromFavourites: (phone: Phone) => void;
 }
 
 export const GlobalContext = createContext<GlobalContextProps>({
@@ -16,5 +15,4 @@ export const GlobalContext = createContext<GlobalContextProps>({
   addToCart: () => {},
   removeFromCart: () => {},
   addToFavourites: () => {},
-  removeFromFavourites: () => {},
 });

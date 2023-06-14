@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { useEffect, useMemo, useState } from "react"
-import { getPhones } from "../../api/phones";
+import { useCallback, useEffect, useMemo, useState } from "react"
+import { getOnePhone, getPhones } from "../../api/phones";
 import { Phone } from "../../types/Phone";
 import './PhonesPage.scss';
 import arrowImg from '../../images/icons/arrow.png';
@@ -8,6 +8,9 @@ import homeImg from '../../images/icons/home.png';
 import { SelectSort } from "../../components/Select/SelectSort";
 import { Select } from "../../components/Select/Select";
 import { CardLayout } from "../../components/CardLayout";
+import { useParams } from "react-router-dom";
+import { CardDetailsDescription } from "../../components/CardDetailsDescription";
+import { PhoneDetails } from "../../types/PhoneDetails";
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([])
@@ -15,6 +18,24 @@ export const PhonesPage = () => {
   const [sortValue, setSortValue] = useState('Newest');
   const [perPageValue, setPerPageValue] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedPhone, setSelectedPhone] = useState<PhoneDetails | null>(null)
+  const { phoneId } = useParams();
+
+  const loadSinglePhone = useCallback(async () => {
+    try {
+      if (phoneId) {
+        const phone = await getOnePhone(phoneId)
+        setSelectedPhone(phone)
+      }
+    } catch (error) {
+      setHasError(true);
+    }
+  }, [phoneId])
+
+  useEffect(() => {
+    loadSinglePhone();
+  }, [phoneId, loadSinglePhone])
+
 
   const indexOfLastPhone = currentPage * perPageValue;
   const indexOfFirstPhone = indexOfLastPhone - perPageValue;
@@ -113,6 +134,9 @@ export const PhonesPage = () => {
           />
           <p className="breadcrumbs__text">Phones</p>
         </div>
+        {phoneId && selectedPhone ? <CardDetailsDescription phone={selectedPhone}/>
+          :
+        <>
         <h1 className='phones-page__title heading--h1'>Mobile phones</h1>
         <p className='phones-page__amount text'>{phones.length} models</p>
         <div className="pagination">
@@ -137,8 +161,7 @@ export const PhonesPage = () => {
           <div className="phones">
             {visiblePhones.map(phone => 
             <CardLayout 
-              phone={phone} 
-              isFullPrices={true} 
+              phone={phone}
               key={phone.phoneId}
             />)}
             </div>
@@ -188,6 +211,7 @@ export const PhonesPage = () => {
           </li>
         </ul>
         }
+        </>}
       </div>
     </>
   )
