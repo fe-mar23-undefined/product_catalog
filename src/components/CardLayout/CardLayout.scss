@@ -1,22 +1,24 @@
+@import "../../utils/mixins";
+@import "../../utils/normalize";
+@import "../../utils/reset";
+
 .card-product {
-    width: 272px;
+    width: 288px;
     border: 3px;
     padding: 32px;
     background: #ffffff;
     border: 1px solid #e2e6e9;
+
+    @include cardWidth;
 
     &:hover {
         border: 1px solid #e2e6e9;
         box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
     }
 
-    @media (max-width: 639px) {
-        width: 288px;
-    }
-
-
     &__block {
         height: 250px;
+
         @media (max-width: 639px) {
             height: 190px;
         }
@@ -60,6 +62,7 @@
         padding-top: 24px;
         font-size: 14px;
         flex: 1;
+
         & a {
             text-decoration: none;
         }
@@ -82,6 +85,7 @@
         font-weight: 800;
         padding: 8px 0 9.5px;
     }
+
     &__full-price {
         color: #89939a;
         font-size: 22px;

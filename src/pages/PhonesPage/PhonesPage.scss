@@ -1,4 +1,14 @@
+@import "../../utils/mixins";
+@import "../../utils/normalize";
+@import "../../utils/reset";
+
+
 .phones-page {
+  margin: 0 auto;
+  max-width: 320px;
+
+  @include breakpoints;
+
   &__title {
     font-weight: 800;
     margin-bottom: 8px;
@@ -11,12 +21,23 @@
 }
 
 .phones {
-  max-width: 1200px;
+  max-width: 288px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  grid-row-gap: 16px;
-  justify-items: center;
+  grid-gap: 16px;
   align-items: center;
+  margin-bottom: 24px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+
+  @include breakpoints;
+  @include phonesGrid;
+
 }
 
 
@@ -69,8 +90,6 @@
       margin-bottom: 4px;
     }
 
-    ;
-
     &-select {
       padding: 10px 12px;
       width: 136px;
@@ -82,7 +101,7 @@
       color: #313237;
       background: none;
 
-      
+
 
       &:focus {
         border: 1px solid #313237;
@@ -109,21 +128,22 @@
         }
       }
     }
-
-    ;
   }
-
-  ;
 
   &__list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     list-style: none;
+    margin-bottom: 64px;
+
+
+    @include desktop {
+      margin-bottom: 80px;
+    }
 
     &-item {
       margin-right: 8px;
-      margin-bottom: 4px;
     }
 
     &-link {
