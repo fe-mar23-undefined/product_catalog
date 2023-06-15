@@ -1,5 +1,15 @@
 @import '/src/utils/mixins';
 
+.title {
+  text-align: center;
+}
+
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .section__category {
   display: flex;
   flex-direction: column;
@@ -121,5 +131,30 @@
     @include tablet {
       margin-right: 16px
     }
+  }
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 432px;
+  width: 1136px;
+}
+
+.arrow {
+  height: 100%;
+  background-color: #ca567b;
+  width: 32px;
+}
+
+.content {
+  background-color: #fad7bc;
+  height: 100%;
+  width: 1050px;
+
+  &__image {
+    width: 1050px;
   }
 }
