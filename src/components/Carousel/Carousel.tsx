@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Phone } from "../../types/Phone";
 import { CardLayout } from "../CardLayout";
+import { Loader } from "../Loader";
 import './Carousel.scss';
 
 interface Props {
@@ -48,7 +49,8 @@ return (
     </div>
     <div className="carousel__wrapper">
       <div className="carousel__wrapper-content">
-        <div className={`carousel__items-container show`}>
+        {phones.length ?
+        (<div className={`carousel__items-container show`}>
           {phones.map(phone => (
             <div 
             className="carousel__item" 
@@ -56,10 +58,12 @@ return (
             style={{ 
               transition: `transform 300ms`,
               transform: `translateX(-${currentIndex * 288}px)` }}>
-              <CardLayout phone={phone} slug="accessories" />
+              <CardLayout phone={phone} slug="/phones/" />
             </div>
           ))}
-        </div>
+        </div>)
+        : <Loader />
+        }
       </div>
     </div>
   </div>
