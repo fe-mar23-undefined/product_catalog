@@ -9,7 +9,9 @@
     background: #ffffff;
     border: 1px solid #e2e6e9;
 
-    @include cardWidth;
+    @include desktop {
+        width: 272px;
+    }
 
     &:hover {
         border: 1px solid #e2e6e9;
@@ -41,7 +43,7 @@
             object-fit: contain;
         }
 
-        @media (min-width: 640px) {
+        @media (min-width: 639px) {
             height: 175px;
             object-fit: contain;
         }

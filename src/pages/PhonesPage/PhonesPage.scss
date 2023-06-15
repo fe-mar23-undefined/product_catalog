@@ -4,12 +4,8 @@
 
 
 .phones-page {
-  margin: 0 auto;
-  max-width: 320px;
-
-  @include breakpoints;
-  @include gridPadings;
-
+  @include pageBreakPoints;
+  
   &__title {
     font-weight: 800;
     margin-bottom: 8px;
@@ -22,23 +18,7 @@
 }
 
 .phones {
-  max-width: 288px;
-  display: grid;
-  grid-gap: 16px;
-  align-items: center;
-  margin-bottom: 24px;
-
-  @include tablet {
-    margin-bottom: 40px;
-  }
-
-  @include desktop {
-    margin-bottom: 40px;
-  }
-
-  @include breakpoints;
-  @include phonesGrid;
-
+  @include phonesBreakPoints;
 }
 
 
@@ -157,6 +137,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: 8px;
 
       &:hover {
         border: 1px solid #313237;

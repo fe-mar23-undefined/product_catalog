@@ -5,17 +5,14 @@
 }
 
 .page__wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include pageBreakPoints;
 }
 .section__category {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 .card {
@@ -141,6 +138,7 @@
   align-items: center;
   height: 432px;
   width: 1136px;
+  margin-bottom: 90px;
 }
 
 .arrow {
