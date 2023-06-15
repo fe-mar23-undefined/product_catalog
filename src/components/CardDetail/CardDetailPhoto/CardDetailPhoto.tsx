@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import './CardDetailPhoto.scss';
 
-
 interface Props {
   images: string[];
   clickedPrevPhoto: (value: string) => void;

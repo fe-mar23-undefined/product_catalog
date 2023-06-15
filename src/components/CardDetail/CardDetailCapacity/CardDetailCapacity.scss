@@ -1,7 +1,8 @@
 .capacity {
-    max-width: 320px;
+
     border-bottom: 1px solid #e2e6e9;
     padding-bottom: 20px;
+   
 
     &__header {
         font-style: normal;
@@ -15,8 +16,6 @@
     &__block-btn {
         display: grid;
         grid-template-columns: repeat(3, 70px);
-        grid-column-gap: 8px;
-
 
     }
     &__btn {
@@ -29,22 +28,22 @@
         background: #ffffff;
         color: #313237;
         border: 1px solid #b4bdc4;
-        padding: 0 9px 0;
-
-
-
+        width: 56px;
+        height: 32px;
+        line-height: 27px;
 
         &--isActive {
             font-style: normal;
             font-weight: 500;
             font-size: 14px;
-            line-height: 21px;
+            line-height: 27px;
             text-align: center;
             color: #ffffff;
             background: #313237;
-            padding: 0 9px 0;
-
             text-decoration: none;
+            width: 56px;
+            height: 32px;
+           align-items: center;
         }
     }
 }

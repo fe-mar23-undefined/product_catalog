@@ -1,9 +1,9 @@
 import'./CardDetailsDescription.scss';
 import { PhoneDetails } from '../../types/PhoneDetails';
-
+import { useEffect } from 'react';
 
 interface Props {
-  phone: PhoneDetails;
+  phones: PhoneDetails;
 }
 
 interface description {
@@ -11,10 +11,18 @@ interface description {
   text: string[];
 }
 
-export const CardDetailsDescription: React.FC<Props> = ({ phone }) => {
-  const {screen, resolution, processor, ram, camera, zoom, cell, description} = phone;
+export const CardDetailsDescription: React.FC<Props> = ({ phones }) => {
+  const {screen, resolution, processor, ram, camera, zoom, cell, description, memory} = phones;
 
-  const cells = cell.map(item => `${item}`).join(', ');
+  const cells = cell.map((item) => `${item}`).join(', ');
+
+  useEffect(() => {
+
+    console.log(phones, 'kkkkk');
+  }, [phones]);
+
+  console.log(phones, 'dfgdfdfdf');
+
 
 return (
 
@@ -64,7 +72,7 @@ return (
 
         <div className="card-details__phone-details">
             <span className="card-details__property">Built in memory</span>
-            <span className="card-details__specs">64 GB</span>
+            <span className="card-details__specs">{memory}</span>
         </div>
 
         <div className="card-details__phone-details">

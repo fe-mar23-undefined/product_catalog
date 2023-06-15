@@ -1,12 +1,10 @@
 .color-picker {
 
-
     &__block-two {
         display: grid;
         grid-template-columns: repeat(4, 32px);
         gap: 8px;
-
-        padding-bottom: 32px;
+        padding-bottom: 18px;
         border-bottom: 1px solid #e2e6e9;
     }
 
@@ -27,17 +25,12 @@
 
         &--isActive {
             border: 1px solid #313237;
-
             display: block;
             width: 32px;
             height: 32px;
             border-radius: 50%;
             box-sizing: border-box;
-
-          /*   outline: 1px solid  #313237; */
             outline-offset: -4px;
         }
-
-
     }
 }

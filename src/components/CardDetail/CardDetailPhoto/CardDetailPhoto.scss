@@ -1,5 +1,5 @@
 .photo-prev {
-    grid-template-columns: auto;
+    grid-template-columns: 80px;
     grid-template-rows: 1fr;
     display: grid;
     gap: 7px;
@@ -15,24 +15,31 @@
         height: 80px;
         object-fit: contain;
         display: block;
-        width: 80%;
         border: 1px solid black;
         padding: 7px;
 
         &--isActive {
-            border: 1px solid #C4C4C4;
+            border: 1px solid #c4c4c4;
             width: 80px;
             height: 80px;
             object-fit: contain;
             display: block;
-            width: 80%;
             padding: 7px;
+
+            @media (max-width: 639px) {
+                width: 45px;
+                height: 45px;
+                object-fit: contain;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 80%;
+            }
         }
 
-
-        @media (min-width: 320px) and (max-width: 639px) {
-            width: 35px;
-            height: 35px;
+        @media (max-width: 639px) {
+            width: 45px;
+            height: 45px;
             object-fit: contain;
             display: block;
             margin-left: auto;

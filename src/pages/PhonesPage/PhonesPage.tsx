@@ -6,11 +6,11 @@ import './PhonesPage.scss';
 import { SelectSort } from "../../components/Select/SelectSort";
 import { Select } from "../../components/Select/Select";
 import { CardLayout } from "../../components/CardLayout";
-import { Link, useParams } from "react-router-dom";
-import { CardDetailsDescription } from "../../components/CardDetailsDescription";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { PhoneDetails } from "../../types/PhoneDetails";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
-import { Loader } from "../../components/Loader";
+
+import { CardDetailMainPhoto } from "../../components/CardDetail/CardDetailMainPhoto/CardDetailMainPhoto";
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([])
@@ -139,7 +139,10 @@ export const PhonesPage = () => {
           </div>
           <Breadcrumbs item={selectedPhone} />
         </div>
-        {phoneId && selectedPhone ? <CardDetailsDescription phone={selectedPhone}/>
+        {phoneId && selectedPhone ?
+        <>
+        <CardDetailMainPhoto phone={selectedPhone}/>
+        </>
           :
         <>
         <h1 className='phones-page__title heading--h1'>Mobile phones</h1>
@@ -147,31 +150,31 @@ export const PhonesPage = () => {
         <div className="pagination">
           <div className="pagination__sort">
             <p className="pagination__sort-text text--small">Sort by</p>
-            <SelectSort 
+            <SelectSort
               value={sortValue}
               onChangeSortValue={handleChangeSortValue}
             />
           </div>
           <div className="pagination__perPage">
             <p className="pagination__perPage-text text--small">Items on page</p>
-            <Select 
-              value={perPageValue} 
+            <Select
+              value={perPageValue}
               onChangePerPageValue={handleChangePerPageValue}
               length={phones.length}
             />
           </div>
         </div>
-        {!hasError && !isLoading
-          ? 
+        {!hasError
+          ?
           <div className="phones">
-            {visiblePhones.map(phone => 
-            <CardLayout 
+            {visiblePhones.map(phone =>
+            <CardLayout
               phone={phone}
               slug={"/phones/"}
               key={phone.phoneId}
             />)}
             </div>
-          
+
           : <p>Error</p>
         }
         {pages(lastPage).length > 1 && <ul className="pagination__list">

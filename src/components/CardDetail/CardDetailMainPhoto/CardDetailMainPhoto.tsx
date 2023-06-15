@@ -1,60 +1,45 @@
+import { useEffect } from 'react';
+
 import './CardDetailMainPhoto.scss';
 import { CardDetailPhoto } from '../CardDetailPhoto/CardDetailPhoto';
-import { useState, useEffect, useMemo } from 'react';
+import { useState } from 'react';
 import { CardPhoneInfo } from '../CardPhoneInfo';
 import { CardDetailCapacity } from '../CardDetailCapacity/CardDetailCapacity';
 import { CardDetailColorPicker } from '../CardDetailColorPicker/CardDetailColorPicker';
 import { CardDetailColorPickerHeader } from '../CardDetailColorPickerHeader/CardDetailColorPickerHeader';
-import phones from '../../../api/phones.json';
+
+import { CardDetaileDescription } from '../CardDetaileDescription/CardDetailDescription';
+
+
+import { PhoneDetails } from '../../../types/PhoneDetails';
+
 
 interface PhoneData {
-  name: string;
-  images: string[];
+  phone: PhoneDetails;
 }
 
-export const CardDetailMainPhoto = () => {
-  const [image, setImage] = useState<PhoneData>({ name: '', images: [] });
-  /* const [data, setData] = useState(); */
+export const CardDetailMainPhoto: React.FC<PhoneData> = ({phone}) => {
 
-  /* setData(phones) */
+  const {images, colorsAvailable, capacityAvailable,
 
-  const colors = [
-    { id: 1, color: '#FCDBC1' },
-    { id: 2, color: '#5F7170' },
-    { id: 3, color: '#4C4C4C' },
-    { id: 4, color: '#E2E6E9' },
-  ];
-
-  const a = `https://catalog-api-delta.vercel.app/api/phones/apple-iphone-7-32gb-black`;
-
-  useEffect(() => {
-    fetch(a)
-      .then((res) => res.json())
-      .then((data: PhoneData) => {
-        setImage(data);
-      })
-      .catch((err) => {
-        console.log(err)
-      });
-  }, [a]);
-
-  const { images } = image;
-
-  const[currentImg, setCurrentImg] = useState('');
-
-  useMemo(() => {
-
-    if(images) {
-      setCurrentImg(`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public//${images[0]}`)
-    }
-  }, [images]);
+  } = phone;
 
 
+ const mainPhotoLink = `https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${images[0]}`;
 
+const [currentImg, setCurrentImg] = useState(mainPhotoLink);
 
- const clickedPrevPhoto = (srcPhoto: string) => {
-  setCurrentImg(srcPhoto)
- }
+useEffect(() => {
+
+  if(images.length) {
+    setCurrentImg(mainPhotoLink)
+  }
+
+}, [images, mainPhotoLink])
+
+  const clickedPrevPhoto = (srcPhoto: string) => {
+    setCurrentImg(srcPhoto)
+  }
 
 
   return (
@@ -62,7 +47,7 @@ export const CardDetailMainPhoto = () => {
       <div className="img-product-details__container">
 
         <div className="img-product-details__img-prev">
-          <CardDetailPhoto images={images} clickedPrevPhoto={clickedPrevPhoto}/>
+          <CardDetailPhoto images={images} clickedPrevPhoto={clickedPrevPhoto} />
         </div>
 
 
@@ -71,16 +56,36 @@ export const CardDetailMainPhoto = () => {
         </div>
 
 
-
-
         <div className="img-product-details__phone-details">
           <div className="img-product-details__block">
-            <CardDetailColorPickerHeader />
-            <CardDetailColorPicker  colors={colors} />
-            <CardDetailCapacity />
-            <CardPhoneInfo phone={phones[0]} isFullPrices={true} />
+
+
+            <div className="img-product-details__block-header">
+              <CardDetailColorPickerHeader />
+            </div>
+
+            <div className="img-product-details__block-color-picker">
+              <CardDetailColorPicker  colors={colorsAvailable} />
+            </div>
+
+            <div className="img-product-details__block-capacity">
+              <CardDetailCapacity capacityAvailable={capacityAvailable} />
+            </div>
+
+            <div className="img-product-details__block-phone-info">
+              <CardPhoneInfo  phones={phone} isFullPrices={true}  />
+            </div>
+
+
+
           </div>
+
         </div>
+      </div>
+
+      <div className="img-product-details__block-desciption">
+
+        <CardDetaileDescription phones={phone} />
       </div>
     </div>
   );

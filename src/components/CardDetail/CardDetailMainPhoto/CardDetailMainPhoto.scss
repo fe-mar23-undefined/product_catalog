@@ -1,53 +1,66 @@
 .img-product-details {
+    max-width: 1400px;
+    margin: auto;
+
     &__container {
         display: grid;
-        grid-template-columns: 80px 442px 395px 200px;
+        grid-template-columns: 80px 442px 395px;
         gap: 20px;
 
-        @media (max-width: 639px) {
-            grid-template-columns: 442px;
-            grid-template-rows: 1fr 80px;
+        @media (max-width: 983px) {
+            justify-content: center;
+        }
+
+        @media (max-width: 638px) {
+            grid-template-columns: repeat(auto-fit, minmax(80px, 270px));
+        }
+
+        @media (min-width: 639px) and (max-width: 834px) {
+            grid-template-columns: 80px 270px 350px;
         }
     }
 
     &__img-prev {
+        width: 80px;
+
         @media (max-width: 639px) {
             grid-row: 2 / 3;
             display: flex;
-            justify-content: center;
             grid-column: 1 /2;
             height: 80px;
         }
     }
 
     &__img-main {
-        @media (max-width: 639px) {
-            display: flex;
-            justify-content: center;
-            grid-row: 1/ 2;
-        }
+        max-width: 442px;
 
         img {
-            width: 442px;
-            height: 442px;
+            max-width: 442px;
+            height: auto;
+            display: block;
             object-fit: contain;
 
-            @media (max-width: 639px) {
-                width: 274px;
-                height: 274px;
-                width: auto;
-                display: block;
-                object-fit: contain;
+            @media (max-width: 1199px) {
+                max-width: 272px;
             }
         }
     }
 
     &__phone-details {
-        padding-left: 75px;
+        padding-left: 60px;
+
+        @media (max-width: 639px) {
+            padding-left: 0px;
+        }
     }
 
     &__block {
         display: grid;
-        grid-row-gap: 22px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-row-gap: 50px;
+    }
+
+    &__block-desciption {
+        margin-top: 75px;
     }
 }
