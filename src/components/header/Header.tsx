@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
+import { useGlobalContext } from '../../context/GlovalContextProvider';
 
 
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { favourites, cart } = useGlobalContext();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -73,6 +75,7 @@ export const Header = () => {
               src={require('../../images/icons/Heart.svg').default}
               alt="Heart Icon"
             />
+            {favourites.length > 0 && <span className="notification">{favourites.length}</span>}
           </div>
         </NavLink>
 
@@ -88,8 +91,10 @@ export const Header = () => {
               src={require('../../images/icons/Cart.svg').default}
               alt="Cart Icon"
             />
+            {cart.length > 0 && <span className="notification">{cart.length}</span>}
           </div>
         </NavLink>
+
 
         <div className="header__element__list" onClick={toggleMenu}>
           <img
@@ -130,8 +135,9 @@ export const Header = () => {
               className={({ isActive }) =>
                 isActive ? 'burger__item is-active' : 'burger__item'
               }
+              onClick={toggleMenu}
             >
-              <div className="burger__link" onClick={toggleMenu}>HOME</div>
+              HOME
             </NavLink>
 
             <NavLink
@@ -139,8 +145,9 @@ export const Header = () => {
               className={({ isActive }) =>
                 isActive ? 'burger__item is-active' : 'burger__item'
               }
+              onClick={toggleMenu}
             >
-              <div className="burger__link" onClick={toggleMenu}>PHONES</div>
+              PHONES
             </NavLink>
 
             <NavLink
@@ -148,8 +155,9 @@ export const Header = () => {
               className={({ isActive }) =>
                 isActive ? 'burger__item is-active' : 'burger__item'
               }
+              onClick={toggleMenu}
             >
-              <div className="burger__link" onClick={toggleMenu}>TABLETS</div>
+              TABLETS
             </NavLink>
 
             <NavLink
@@ -157,41 +165,44 @@ export const Header = () => {
               className={({ isActive }) =>
                 isActive ? 'burger__item is-active' : 'burger__item'
               }
+              onClick={toggleMenu}
             >
-              <div className="burger__link" onClick={toggleMenu}>ACCESSORIES</div>
+              ACCESSORIES
             </NavLink>
           </div>
 
           <div className="burger__bottom">
-              <NavLink
-                to="/favourites"
-                className={({ isActive }) =>
-                  isActive ? 'burger__bottom__box is-active' : 'burger__bottom__box'
-                }
-              >
-                <div className="burger__element--heart" onClick={toggleMenu}>
-                  <img
-                    className="icon__heart"
-                    src={require('../../images/icons/Heart.svg').default}
-                    alt="Heart Icon"
-                  />
-                </div>
-              </NavLink>
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) =>
+                isActive ? 'burger__bottom__box is-active' : 'burger__bottom__box'
+              }
+            >
+              <div className="burger__element--heart" onClick={toggleMenu}>
+                <img
+                  className="icon__heart"
+                  src={require('../../images/icons/Heart.svg').default}
+                  alt="Heart Icon"
+                />
+                {favourites.length > 0 && <span className="notification">{favourites.length}</span>}
+              </div>
+            </NavLink>
 
-              <NavLink
-                to="/cart"
-                className={({ isActive }) =>
-                  isActive ? 'burger__bottom__box burger__bottom__box--1 is-active' : 'burger__bottom__box--1'
-                }
-              >
-                <div className="burger__element--cart" onClick={toggleMenu}>
-                  <img
-                    className="icon__cart"
-                    src={require('../../images/icons/Cart.svg').default}
-                    alt="Cart Icon"
-                  />
-                </div>
-              </NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                isActive ? 'burger__bottom__box burger__bottom__box--1 is-active' : 'burger__bottom__box burger__bottom__box--1'
+              }
+            >
+              <div className="burger__element--cart" onClick={toggleMenu}>
+                <img
+                  className="icon__cart"
+                  src={require('../../images/icons/Cart.svg').default}
+                  alt="Cart Icon"
+                />
+                {cart.length > 0 && <span className="notification">{cart.length}</span>}
+              </div>
+            </NavLink>
           </div>
         </div>
       )}
