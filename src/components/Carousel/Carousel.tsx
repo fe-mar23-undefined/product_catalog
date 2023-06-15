@@ -10,11 +10,11 @@ interface Props {
 
 export const Carousel: React.FC<Props> = ({ phones, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [length, setLength] = useState(phones.slice(0, 10).length);
+  const [length, setLength] = useState(phones.length);
 
 
   useEffect(() => {
-    setLength(phones.slice(0, 10).length)
+    setLength(phones.length)
   }, [phones])
   
   const handleNext = () => {
@@ -32,7 +32,7 @@ export const Carousel: React.FC<Props> = ({ phones, title }) => {
 return (
   <div className="carousel">
     <div className="carousel__header">
-      <h1 className="carousel__title">{title}</h1>
+      <h1 className="carousel__title heading--h2">{title}</h1>
       <div className="carousel__buttons-container">
         <button 
           className="carousel__button carousel__button-prev"
@@ -49,13 +49,13 @@ return (
     <div className="carousel__wrapper">
       <div className="carousel__wrapper-content">
         <div className={`carousel__items-container show`}>
-          {phones.slice(0, 10).map(phone => (
+          {phones.map(phone => (
             <div 
             className="carousel__item" 
             key={phone.phoneId}
             style={{ 
               transition: `transform 300ms`,
-              transform: `translateX(-${currentIndex * (100)}%)` }}>
+              transform: `translateX(-${currentIndex * 288}px)` }}>
               <CardLayout phone={phone} slug="accessories" />
             </div>
           ))}

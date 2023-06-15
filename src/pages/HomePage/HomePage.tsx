@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getPhones } from '../../api/phones';
+import { Carousel } from '../../components/Carousel';
 import { Phone } from '../../types/Phone';
 import './HomePage.scss';
 
@@ -21,10 +22,15 @@ export const HomePage = () => {
     }
   }
 
-  const brandNewPhones = phones
-    .sort((firstPhone, secondPhone) => secondPhone.year - firstPhone.year);
-  const hotPricesPhones = phones
-    .sort((firstPhone, secondPhone) => firstPhone.price - secondPhone.price);
+  const brandNewPhones = useMemo(() => {
+    let newPhones = [...phones];
+    return newPhones.sort((firstPhone, secondPhone) => secondPhone.year - firstPhone.year)
+    }, [phones]);
+
+  const hotPricesPhones = useMemo(() => {
+    let newPhones = [...phones];
+    return newPhones
+    .sort((firstPhone, secondPhone) => firstPhone.price - secondPhone.price)}, [phones]);
 
   useEffect(() => {
     loadPhones();
@@ -42,7 +48,6 @@ export const HomePage = () => {
   };
 
   return (
-    <>
     <div className="page__wrapper">
       <h1 className="title">Welcome to Nice Gadgets store!</h1>
 
@@ -60,7 +65,7 @@ export const HomePage = () => {
         <div className="selector selector--2"></div>
         <div className="selector selector--3"></div>
       </div>
-
+      <Carousel phones={brandNewPhones} title="Brand new models" />
       <section className="section__category">
         <h2 className="section__title">Shop by category</h2>
         <div className="card__container">
@@ -101,7 +106,7 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
+      <Carousel phones={hotPricesPhones} title="Hot prices" />
     </div>
-    </>
   );
 };
