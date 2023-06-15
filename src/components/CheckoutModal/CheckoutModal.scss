@@ -30,13 +30,23 @@
     background-color: #fafbfc;
     z-index: 2;
     width: 50%;
-    min-height: 280px;
+    min-height: 240px;
+    min-width: 260px;
+    max-width: 440px;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    padding: 32px;
+    padding: 16px 8px;
+    justify-content: center;
+    align-items: center;
+
+    &-heading {
+      max-width: 450px;
+      gap: 16px;
+      margin: 16px
+    }
 
     &-item {
       max-width: 320px;
@@ -65,5 +75,10 @@
         justify-content: flex-end;
       }
     }
+  }
+
+  &__button {
+    @include button;
+    padding: 8px;
   }
 }
