@@ -29,6 +29,12 @@
         height: 195px;
         overflow: hidden;
         display: flex;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in;
+
+        &:hover {
+            transform: scale(110%);
+        }
 
         @media (max-width: 639px) {
             height: 130px;
