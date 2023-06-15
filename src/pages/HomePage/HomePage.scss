@@ -1,0 +1,125 @@
+@import '/src/utils/mixins';
+
+.section__category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  width: 288px;
+  height: 288px;
+  overflow: hidden;
+
+  @include tablet {
+    width: 187px;
+    height: 187px;
+  }
+
+  @include desktop {
+    width: 368px;
+    height: 368px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @include phone {
+      flex-direction: column;
+    }
+  }
+
+  &--1 {
+    background-color: #fad7bc;
+  }
+
+  &--2 {
+    background-color: #838489;
+  }
+
+  &--3 {
+    background-color: #ca567b;
+  }
+
+  &__image {
+    object-fit: cover;
+
+    &--1 {
+      margin: 120px 0 0 90px;
+      width: 302.09px;
+      height: 357.65px;
+
+      @include tablet {
+        margin: 80px 0 0 60px;
+        width: 196.15px;
+        height: 232.23px;
+      }
+
+      @include desktop {
+        margin: 140px 0 0 100px;
+        width: 386px;
+        height: 457px;
+      }
+    }
+
+    &--2 {
+      margin: 200px 0 0 200px;
+      width: 427.3px;
+      height: 427.3px;
+
+      @include tablet {
+        margin: 140px 0 0 140px;
+        width: 277.45px;
+        height: 277.45px;
+      }
+
+      @include desktop {
+        margin: 240px 0 0 260px;
+        width: 546px;
+        height: 546px;
+      }
+    }
+
+    &--3 {
+      height: 288px;
+      margin: 100px 0 0 420px;
+     
+
+      @include tablet {
+        height: 187px;
+        margin: 80px 0 0 300px;
+      }
+
+      @include desktop {
+        height: 368px;
+        margin: 120px 0 0 560px;
+      }
+    }
+  }
+
+  &__item__count {
+    font-size: 14px;
+    color: #89939A;
+
+  }
+
+  &__wrapper {
+
+    @include desktop {
+      margin-right: 16px;
+    }
+
+    @include tablet {
+      margin-right: 16px
+    }
+  }
+}
