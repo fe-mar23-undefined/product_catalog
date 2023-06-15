@@ -64,9 +64,6 @@ export const GlobalContextProvider: React.FC<ProviderProps> = ({ children }) => 
     }
   };
 
-  const emptyCart = () => {
-    setCart([]);
-  }
 
   return (
     <GlobalContext.Provider 
@@ -76,7 +73,6 @@ export const GlobalContextProvider: React.FC<ProviderProps> = ({ children }) => 
         addToCart,
         removeFromCart,
         addToFavourites,
-        emptyCart,
       }}
     >
       {children}
