@@ -5,11 +5,8 @@
 .cart-page {
     font-family: 'Mont';
 
-    @include desktop {
-
-        max-width: 368px;
-
-    }
+    @include breakpoints;
+    @include phonesGrid;
 
     &__title {
         padding: 24px 16px 32px;

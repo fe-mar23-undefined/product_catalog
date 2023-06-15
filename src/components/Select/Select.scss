@@ -3,7 +3,7 @@
 @import "../../utils/reset";
 
 .select__header {
-  margin-bottom: 4px;
+  margin-bottom: 24px;
   padding: 10px 12px;
   font-weight: 500;
   font-size: 14px;
@@ -13,9 +13,14 @@
   width: 136px;
   display: flex;
   justify-content: space-between;
+  
 
   &--sort {
     @include tablet {
+      width: 187px;
+    }
+
+    @include desktop {
       width: 187px;
     }
   }
