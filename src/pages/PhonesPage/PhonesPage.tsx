@@ -10,6 +10,8 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { PhoneDetails } from "../../types/PhoneDetails";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 
+import { Loader } from '../../components/Loader/Loader';
+
 import { CardDetailMainPhoto } from "../../components/CardDetail/CardDetailMainPhoto/CardDetailMainPhoto";
 
 export const PhonesPage = () => {
