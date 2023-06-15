@@ -1,5 +1,5 @@
 import { CardLayout } from "../../components/CardLayout";
-import { useGlobalContext, } from "../../context/GlovalContextProvider"
+import { useGlobalContext, } from "../../context/GlobalContextProvider"
 import { useCallback, useState, useEffect } from "react"
 import { getOnePhone } from "../../api/phones";
 import { Breadcrumbs } from "../../components/Breadcrumbs";

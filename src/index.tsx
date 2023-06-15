@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import { App } from './App';
-import { GlobalContextProvider } from './context/GlovalContextProvider';
+import { GlobalContextProvider } from './context/GlobalContextProvider';
 
 
 const root = ReactDOM.createRoot(

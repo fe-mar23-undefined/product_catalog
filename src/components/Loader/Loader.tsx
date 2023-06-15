@@ -2,6 +2,8 @@ import "./Loader.scss";
 
 export const Loader: React.FC = () => {
   return (
-    <span className="loader"></span>
+    <div className="loader-container">
+      <span className="loader"></span>
+    </div>
   )
 }

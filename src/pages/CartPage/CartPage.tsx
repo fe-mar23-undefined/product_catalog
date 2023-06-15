@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../../context/GlovalContextProvider';
+import { useGlobalContext } from '../../context/GlobalContextProvider';
 import './CartPage.scss'
 
 export const CartPage = () => {

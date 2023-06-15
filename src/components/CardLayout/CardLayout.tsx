@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../../context/GlovalContextProvider';
+import { useGlobalContext } from '../../context/GlobalContextProvider';
 import { Phone } from '../../types/Phone';
 
 import './CardLayout.scss'

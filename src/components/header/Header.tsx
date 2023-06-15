@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
-import { useGlobalContext } from '../../context/GlovalContextProvider';
+import { useGlobalContext } from '../../context/GlobalContextProvider';
 
 
 
