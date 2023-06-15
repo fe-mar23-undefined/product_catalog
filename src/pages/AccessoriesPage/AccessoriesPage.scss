@@ -1,0 +1,5 @@
+@import '../../utils/mixins';
+
+.accessories-page {
+  @include pageBreakPoints;
+}

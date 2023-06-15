@@ -1,8 +1,34 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getPhones } from '../../api/phones';
+import { Phone } from '../../types/Phone';
 import './HomePage.scss';
 
 export const HomePage = () => {
   const [currentImage, setCurrentImage] = useState(1);
+  const [phones, setPhones] = useState<Phone[]>([])
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  const loadPhones = async () => {
+    try {
+      setIsLoading(true);
+      const loadedPhones = await getPhones();
+      setPhones(loadedPhones);
+    } catch (error) {
+      setHasError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  const brandNewPhones = phones
+    .sort((firstPhone, secondPhone) => secondPhone.year - firstPhone.year);
+  const hotPricesPhones = phones
+    .sort((firstPhone, secondPhone) => firstPhone.price - secondPhone.price);
+
+  useEffect(() => {
+    loadPhones();
+  }, []);
   const totalImages = 3;
 
   const showNextImage = () => {

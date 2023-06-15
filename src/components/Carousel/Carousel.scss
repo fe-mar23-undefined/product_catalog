@@ -1,0 +1,64 @@
+@import '../../utils/variables';
+@import '../../utils/mixins';
+
+.carousel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    min-width: 1200px;
+
+      
+    &-content {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icon-color;
+    background-color: $white-color;
+    background-image: url('../../images/icons/arrow-dark.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:disabled {
+      background-image: url('../../images/icons/arrow.png');
+      &:hover {
+        border-color: $icon-color;
+        cursor: not-allowed;
+      }
+    }
+    &-prev {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__items-container {
+    transition: all 0.3 linear;
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.show {
+  width: calc(100% / 4);
+}
