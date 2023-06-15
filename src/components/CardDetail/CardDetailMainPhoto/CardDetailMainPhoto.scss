@@ -1,0 +1,53 @@
+.img-product-details {
+    &__container {
+        display: grid;
+        grid-template-columns: 80px 442px 395px 200px;
+        gap: 20px;
+
+        @media (max-width: 639px) {
+            grid-template-columns: 442px;
+            grid-template-rows: 1fr 80px;
+        }
+    }
+
+    &__img-prev {
+        @media (max-width: 639px) {
+            grid-row: 2 / 3;
+            display: flex;
+            justify-content: center;
+            grid-column: 1 /2;
+            height: 80px;
+        }
+    }
+
+    &__img-main {
+        @media (max-width: 639px) {
+            display: flex;
+            justify-content: center;
+            grid-row: 1/ 2;
+        }
+
+        img {
+            width: 442px;
+            height: 442px;
+            object-fit: contain;
+
+            @media (max-width: 639px) {
+                width: 274px;
+                height: 274px;
+                width: auto;
+                display: block;
+                object-fit: contain;
+            }
+        }
+    }
+
+    &__phone-details {
+        padding-left: 75px;
+    }
+
+    &__block {
+        display: grid;
+        grid-row-gap: 22px;
+    }
+}
