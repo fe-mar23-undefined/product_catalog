@@ -1,0 +1,84 @@
+@import "../../utils/normalize.scss";
+@import "../../utils/reset.scss";
+@import "../../utils/mixins";
+@import "../../utils/typography";
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__background {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 50%;
+    z-index: 1;
+    display: flex;
+  }
+
+  &__box {
+    border: 2px solid #e2e6e9;
+    border-radius: 4px;
+    position: fixed;
+    top: calc(50% - 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafbfc;
+    z-index: 2;
+    width: 50%;
+    min-height: 240px;
+    min-width: 260px;
+    max-width: 440px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 8px;
+    justify-content: center;
+    align-items: center;
+
+    &-heading {
+      max-width: 450px;
+      gap: 16px;
+      margin: 16px
+    }
+
+    &-item {
+      max-width: 320px;
+      margin-bottom: 8px;
+      color: inherit;
+
+      &-text {
+        color: inherit;
+
+        &--center {
+          text-align: center;
+        }
+
+        &--right {
+          text-align: right;
+        }
+      }
+
+      &--green {
+        color: #27ae60;
+      }
+
+      &--flex {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__button {
+    @include button;
+    padding: 8px;
+  }
+}

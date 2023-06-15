@@ -1,13 +1,21 @@
-
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../context/GlobalContextProvider';
 import './CartPage.scss'
+import { CheckoutModal } from '../../components/CheckoutModal';
 
 export const CartPage = () => {
-    const {cart, removeFromCart, addToCart} = useGlobalContext();
+    const [isProcessing, setIsProcessing] = useState(false);
+    const {cart, removeFromCart, addToCart, emptyCart} = useGlobalContext();
 
     const totalPrice = cart
         .reduce((accu, curr) => accu + curr.fullPrice, 0);
+
+    const handleSubmit = () => {
+        emptyCart();
+        setIsProcessing(true);
+    }
+
     return (
         <section className='cart-page main__cart-page'>
             <Link className='cart-page__back-link' to={`/phones`}>
@@ -34,12 +42,11 @@ export const CartPage = () => {
                 <div className='cart-page__checkout'>
                     <p className='cart-page__checkout__total-price'>${totalPrice}</p>
                     <p className='cart-page__checkout__items-number'>Total for {cart.length} items</p>
-                    <button className='cart-page__checkout__submit'>checkout</button>
+                    <button onClick={handleSubmit} className='cart-page__checkout__submit'>checkout</button>
                 </div>
             </div>
             }
-
-
+        {isProcessing && <CheckoutModal setLoaderStatus={setIsProcessing} />}
         </section>
     )
 
