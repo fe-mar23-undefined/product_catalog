@@ -2,4 +2,7 @@
 
 .accessories-page {
   @include pageBreakPoints;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
