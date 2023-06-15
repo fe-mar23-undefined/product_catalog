@@ -159,6 +159,7 @@ export const PhonesPage = () => {
             {visiblePhones.map(phone => 
             <CardLayout 
               phone={phone}
+              slug={"/phones/"}
               key={phone.phoneId}
             />)}
             </div>

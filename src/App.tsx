@@ -4,7 +4,7 @@ import { HomePage } from "./pages/HomePage";
 import { PageNotFound } from "./pages/PageNotFound";
 import { PhonesPage } from "./pages/PhonesPage";
 import { TabletsPage } from "./pages/TabletsPage";
-import { Header } from "./components/Header";
+import { Header } from "./components/header/Header";
 import { CartPage } from "./pages/CartPage";
 import { FavouritesPage } from "./pages/FavouritesPage";
 import { Footer } from "./components/Footer";
@@ -24,7 +24,9 @@ export const App = () => (
         <Route path="/tablets" element={<TabletsPage />} />
         <Route path="/accessories" element={<AccessoriesPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/favourites" element={<FavouritesPage />} />
+        <Route path="/favourites" element={<FavouritesPage />}>
+          <Route path=":phoneId" element={<FavouritesPage />} />
+        </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

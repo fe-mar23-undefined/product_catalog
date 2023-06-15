@@ -8,6 +8,7 @@
   max-width: 320px;
 
   @include breakpoints;
+  @include gridPadings;
 
   &__title {
     font-weight: 800;

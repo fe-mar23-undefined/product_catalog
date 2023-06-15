@@ -7,9 +7,10 @@ import './CardLayout.scss'
 
 interface Props {
   phone: Phone;
+  slug: string;
 }
 
-export const CardLayout: React.FC<Props> = ({ phone }) => {
+export const CardLayout: React.FC<Props> = ({ phone, slug }) => {
   const { image, 
     price, 
     fullPrice, 
@@ -38,7 +39,7 @@ export const CardLayout: React.FC<Props> = ({ phone }) => {
             alt={name}
           />
           <p  className="card-product__desription">
-            <Link to={`/phones/${phoneId}`}>{name}</Link></p>
+            <Link to={`${slug}${phoneId}`}>{name}</Link></p>
         </div>
         <div className="card-product__price-details">
           <span className="card-product__price">${price}</span>

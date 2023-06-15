@@ -21,9 +21,11 @@ export const Breadcrumbs: React.FC<Props> = ({ item }) => {
         name = item.name
       } 
 
+      const capitalize = crumb[0].toUpperCase() + crumb.slice(1);
+
       return (
         <div className="breadcrumbs__crumb" key={crumb}>
-          <Link to={currentLink} className="breadcrumbs__crumb-link">{name || crumb}</Link>
+          <Link to={currentLink} className="breadcrumbs__crumb-link">{name || capitalize}</Link>
         </div>
       )
     })

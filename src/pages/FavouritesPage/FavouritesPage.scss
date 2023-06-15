@@ -1,0 +1,33 @@
+@import "../../utils/mixins";
+@import "../../utils/normalize";
+@import "../../utils/reset";
+
+.favourites-page {
+    margin: 0 auto;
+    max-width: 320px;
+    margin-bottom: 56px;
+
+    @include tablet {
+        margin-bottom: 64px;
+    }
+
+    @include desktop {
+        margin-bottom: 80px;
+    }
+
+    @include breakpoints;
+    @include gridPadings;
+
+    &__items {
+        display: grid;
+        grid-gap: 16px;
+        align-items: center;
+        @include breakpoints;
+        @include phonesGrid;
+    }
+
+    &__amount {
+        color: #89939A;
+        margin-bottom: 32px;
+    }
+}
