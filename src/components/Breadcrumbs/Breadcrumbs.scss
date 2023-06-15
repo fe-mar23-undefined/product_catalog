@@ -19,7 +19,6 @@
 
   &__crumb-link {
     display: flex;
-    
     text-decoration: none;
 
     &--home {
@@ -31,6 +30,7 @@
 
   &__crumb {
     display: flex;
+    text-transform: capitalize;
   }
 
   &__crumb:after {

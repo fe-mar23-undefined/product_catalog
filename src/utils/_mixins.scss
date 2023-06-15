@@ -23,6 +23,7 @@
 
   @media (min-width: 497px) and (max-width: 617px) {
     max-width: 468.8px;
+
   }
 
   @media (min-width: 618px) and (max-width: 639px) {
@@ -47,6 +48,7 @@
 }
 
 @mixin phonesGrid {
+
   @media (min-width: 497px) and (max-width: 617px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -91,5 +93,15 @@
 
   @media (min-width: 887px) {
     width: 272px;
+  }
+}
+
+@mixin gridPadings {
+  @media (max-width: 480px) {
+    padding: 0 16px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 24px;
   }
 }
