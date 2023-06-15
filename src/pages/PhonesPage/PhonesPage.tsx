@@ -6,10 +6,11 @@ import './PhonesPage.scss';
 import { SelectSort } from "../../components/Select/SelectSort";
 import { Select } from "../../components/Select/Select";
 import { CardLayout } from "../../components/CardLayout";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CardDetailsDescription } from "../../components/CardDetailsDescription";
 import { PhoneDetails } from "../../types/PhoneDetails";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
+import { Loader } from "../../components/Loader";
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([])
@@ -17,20 +18,22 @@ export const PhonesPage = () => {
   const [sortValue, setSortValue] = useState('Newest');
   const [perPageValue, setPerPageValue] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedPhone, setSelectedPhone] = useState<PhoneDetails | null>(null)
   const { phoneId } = useParams();
 
-  const location = useLocation()
 
-  console.log(location)
   const loadSinglePhone = useCallback(async () => {
     try {
+      setIsLoading(true);
       if (phoneId) {
         const phone = await getOnePhone(phoneId)
         setSelectedPhone(phone)
       }
     } catch (error) {
       setHasError(true);
+    } finally {
+      setIsLoading(false);
     }
   }, [phoneId])
 
@@ -69,11 +72,14 @@ export const PhonesPage = () => {
 
   const loadPhones = async () => {
     try {
+      setIsLoading(true);
       const loadedPhones = await getPhones();
       setPhones(loadedPhones);
       setPerPageValue(loadedPhones.length)
     } catch (error) {
       setHasError(true);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -123,6 +129,8 @@ export const PhonesPage = () => {
   return (
     <>
       <div className='phones-page'>
+        {isLoading && <Loader />}
+        {!isLoading && <>
         <div className="breadcrumbs">
           <div className="breadcrumbs__crumb">
             <Link to='/' className="breadcrumbs__crumb-link">
@@ -153,7 +161,7 @@ export const PhonesPage = () => {
             />
           </div>
         </div>
-        {!hasError
+        {!hasError && !isLoading
           ? 
           <div className="phones">
             {visiblePhones.map(phone => 
@@ -209,6 +217,7 @@ export const PhonesPage = () => {
           </li>
         </ul>
         }
+        </>}
         </>}
       </div>
     </>
