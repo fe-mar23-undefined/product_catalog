@@ -41,7 +41,7 @@ export const FavouritesPage = () => {
           </div>
           <Breadcrumbs item={selectedPhone} />
         </div>
-        {phoneId && selectedPhone ? <CardDetailsDescription phone={selectedPhone} />
+        {phoneId && selectedPhone ? <CardDetailsDescription phones={selectedPhone} />
           :
           <>
             <h1 className="heading--h1">Favourites</h1>

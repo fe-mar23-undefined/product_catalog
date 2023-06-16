@@ -1,0 +1,173 @@
+.card-product {
+    width: 272px;
+    border: 3px;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #e2e6e9;
+
+    &:hover {
+        border: 1px solid #e2e6e9;
+        box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 639px) {
+        width: 288px;
+    }
+
+
+    &__block {
+        height: 250px;
+        @media (max-width: 639px) {
+            height: 190px;
+        }
+    }
+
+    &__image {
+        width: 208px;
+        height: 195px;
+        overflow: hidden;
+        display: flex;
+
+        @media (max-width: 639px) {
+            height: 130px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 640px) {
+            height: 175px;
+            object-fit: contain;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+
+            @media (max-width: 639px) {
+                overflow: hidden;
+                object-fit: contain;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+
+    &__desription {
+        padding-top: 24px;
+        font-size: 14px;
+        flex: 1;
+    }
+
+    &__details {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 8px;
+    }
+
+    &__block-details {
+        padding-top: 46px;
+    }
+
+    &__add-prod-to-card {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__price {
+        color: #313237;
+        font-size: 22px;
+        font-weight: 800;
+        padding: 8px 0 9.5px;
+    }
+    &__full-price {
+        color: #89939a;
+        font-size: 22px;
+        text-decoration: line-through;
+        padding-left: 8px;
+        font-weight: 700;
+    }
+
+    &__prod-details-description {
+        color: #89939a;
+    }
+
+    &__prod-details {
+        color: #313237;
+    }
+
+    &__line {
+        height: 1px;
+        width: auto;
+        background-color: #e2e6e9;
+        margin-top: 8px;
+    }
+
+    &__add-to-card {
+        background-color: #313237;
+        color: #ffffff;
+        width: 263px;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        text-decoration: none;
+        border: 1px solid transparent;
+
+        @media (width: 768px) {
+            width: 130px;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &--active {
+            background-color: #ffffff;
+            color: #27ae60;
+            width: 140px;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+            border: 1px solid #b4bdc3;
+
+            @media (width: 768px) {
+                width: 130px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__add-prod-to-card {
+        padding-top: 45px;
+
+    }
+
+    &__save-product {
+        width: 48px;
+        height: 48px;
+      /*   background-image: url('../../images/icons/Heart.svg'); */
+        border: 1px solid #b4bdc3;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #ffffff;
+
+        &:hover {
+            border: 1px solid #313237;
+            cursor: pointer;
+        }
+
+        &--selection {
+           /*  background-image: url('../../images/icons/Heart-filled.svg'); */
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid #e2e6e9;
+        }
+    }
+}
