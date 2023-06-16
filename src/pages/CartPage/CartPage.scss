@@ -132,6 +132,12 @@
         cursor: pointer;
         grid-area: delete;
         justify-self: flex-start;
+
+        &:hover {
+            svg path {
+                fill: #313237;
+            }
+        }
     }
 
     &__image-container {
@@ -155,9 +161,9 @@
     display: flex;
 
     &__btn:disabled {
-        background-color: #89939a;
-        color: #fff;
+        color: #E2E6E9;
         cursor: not-allowed;
+        border: 1px solid #E2E6E9;
     }
 
     &__value {
@@ -167,16 +173,19 @@
         width: 32px;
     }
 
-    &____btn {
+    &__btn {
         background: none;
         border: 1px solid #e2e6e9;
         cursor: pointer;
         height: 32px;
         width: 32px;
+
+        &:hover {
+            border: 1px solid #313237;
+        }
     }
 
     &__value {
-
         color: #313237;
         font-size: 22px;
         font-weight: 800;
@@ -195,4 +204,41 @@
     @include desktop {
         grid-template-columns: 2fr 1fr;
     }
+}
+
+.cart-empty-img {
+    max-width: 300px;
+    display: flex;
+    align-self: center;
+    padding-right: 41px;
+
+    @include tablet {
+        max-width: 400px;
+    }
+
+    @include desktop {
+        max-width: 400px;
+    }
+}
+
+.cart-empty-message {
+    margin: 10px;
+
+    text-align: center;
+
+}
+
+.cart-empty-link {
+    text-decoration: none;
+
+    h2 {
+        text-align: center;
+        color: #89939A;
+        margin-bottom: 40px;
+
+        &:hover {
+            color: #313237;
+        }
+    }
+
 }

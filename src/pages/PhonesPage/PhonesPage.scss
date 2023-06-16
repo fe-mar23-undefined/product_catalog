@@ -5,7 +5,7 @@
 
 .phones-page {
   @include pageBreakPoints;
-  
+
   &__title {
     font-weight: 800;
     margin-bottom: 8px;
@@ -84,6 +84,7 @@
 
 
 
+
       &:focus {
         border: 1px solid #313237;
       }
@@ -111,13 +112,23 @@
     }
   }
 
+  .select__drop-down {
+    position: relative;
+
+    &__list {
+      top: -19px;
+      z-index: 1;
+    }
+  }
+
   &__list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     list-style: none;
     margin-bottom: 64px;
-
+    top: -19px;
+    z-index: 1;
 
     @include desktop {
       margin-bottom: 80px;
