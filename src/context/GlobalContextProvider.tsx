@@ -1,4 +1,5 @@
 import { useState, useContext, ReactNode, useEffect } from "react";
+import { CartPhone } from "../types/CartPhone";
 import { Phone } from "../types/Phone";
 import { GlobalContext } from "./GlobalContext";
 
@@ -9,7 +10,7 @@ interface ProviderProps {
 
 export const GlobalContextProvider: React.FC<ProviderProps> = ({ children }) => {
   const [favourites, setFavourites] = useState<Phone[]>([]);
-  const [cart, setCart] = useState<Phone[]>([]);
+  const [cart, setCart] = useState<CartPhone[]>([]);
 
   useEffect(() => {
     const localCart = localStorage.getItem('cart');
@@ -46,22 +47,37 @@ export const GlobalContextProvider: React.FC<ProviderProps> = ({ children }) => 
 
   
   const addToCart = (phone: Phone) => {
-    setCart((prevCart) => [...prevCart, phone]);
+    setCart((prevCart) => {
+      const foundPhone = cart.find(telephone => telephone.phone.itemId === phone.itemId);
+
+      if (foundPhone) {
+        foundPhone.quantity += 1;
+  
+      } else {
+        prevCart.push({ phone, quantity: 1 });
+      }
+
+      return [...prevCart];
+    })
+    
   };
+
+  const decreaseQuantity = (phone: Phone) => {
+     setCart((prevCart) => {
+      const foundPhone = prevCart.find((item) => item.phone.id === phone.id);
+
+      if (foundPhone) {
+        if (foundPhone.quantity > 1) {
+          foundPhone.quantity -= 1;
+        } 
+      }
+
+      return [...prevCart];
+    });
+  }
   
   const removeFromCart = (phone: Phone) => {
-    const foundPhone = cart
-      .find(phoneToFind => phoneToFind.phoneId === phone.phoneId);
-
-    if (foundPhone) {
-      const cartIds = cart.map(item => item.itemId);
-      const indexToRemove = cartIds.indexOf(foundPhone.itemId);
-
-      const updatedCart = [...cart]
-      updatedCart.splice(indexToRemove, 1);
-      setCart(updatedCart)
-
-    }
+    setCart(prevCart => prevCart.filter(telephone => telephone.phone.itemId !== phone.itemId))
   };
 
   const emptyCart = () => {
@@ -77,6 +93,7 @@ export const GlobalContextProvider: React.FC<ProviderProps> = ({ children }) => 
         removeFromCart,
         addToFavourites,
         emptyCart,
+        decreaseQuantity,
       }}
     >
       {children}
