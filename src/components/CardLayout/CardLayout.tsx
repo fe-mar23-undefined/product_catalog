@@ -27,7 +27,7 @@ export const CardLayout: React.FC<Props> = ({ phone, slug }) => {
     .some(phoneToFind => phoneToFind.id === phone.id);
 
   const isAddedToCart = cart
-    .some(phoneToFind => phoneToFind.id === phone.id);
+    .some(phoneToFind => phoneToFind.phone.id === phone.id);
 
   return (
     <div className="card-product">

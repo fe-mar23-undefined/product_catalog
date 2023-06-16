@@ -1,26 +1,22 @@
-@import "../../utils/mixins";
-@import "../../utils/normalize";
-@import "../../utils/reset";
-
 .card-product {
-    width: 288px;
+    width: 272px;
     border: 3px;
     padding: 32px;
     background: #ffffff;
     border: 1px solid #e2e6e9;
-
-    @include desktop {
-        width: 272px;
-    }
 
     &:hover {
         border: 1px solid #e2e6e9;
         box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
     }
 
+    @media (max-width: 639px) {
+        width: 288px;
+    }
+
+
     &__block {
         height: 250px;
-
         @media (max-width: 639px) {
             height: 190px;
         }
@@ -31,19 +27,13 @@
         height: 195px;
         overflow: hidden;
         display: flex;
-        transition-duration: 0.2s;
-        transition-timing-function: ease-in;
-
-        &:hover {
-            transform: scale(110%);
-        }
 
         @media (max-width: 639px) {
             height: 130px;
             object-fit: contain;
         }
 
-        @media (min-width: 639px) {
+        @media (min-width: 640px) {
             height: 175px;
             object-fit: contain;
         }
@@ -70,16 +60,16 @@
         padding-top: 24px;
         font-size: 14px;
         flex: 1;
-
-        & a {
-            text-decoration: none;
-        }
     }
 
     &__details {
         display: flex;
         justify-content: space-between;
         padding-top: 8px;
+    }
+
+    &__block-details {
+        padding-top: 46px;
     }
 
     &__add-prod-to-card {
@@ -93,7 +83,6 @@
         font-weight: 800;
         padding: 8px 0 9.5px;
     }
-
     &__full-price {
         color: #89939a;
         font-size: 22px;
@@ -120,7 +109,7 @@
     &__add-to-card {
         background-color: #313237;
         color: #ffffff;
-        width: 140px;
+        width: 263px;
         padding: 10px;
         text-align: center;
         font-size: 14px;
@@ -156,13 +145,14 @@
     }
 
     &__add-prod-to-card {
-        padding-top: 16px;
+        padding-top: 45px;
+
     }
 
     &__save-product {
-        width: 40px;
-        height: 40px;
-        background-image: url('../../images/icons/Heart.svg');
+        width: 48px;
+        height: 48px;
+      /*   background-image: url('../../images/icons/Heart.svg'); */
         border: 1px solid #b4bdc3;
         background-repeat: no-repeat;
         background-position: center;
@@ -174,7 +164,7 @@
         }
 
         &--selection {
-            background-image: url('../../images/icons/Heart-filled.svg');
+           /*  background-image: url('../../images/icons/Heart-filled.svg'); */
             background-repeat: no-repeat;
             background-position: center;
             border: 1px solid #e2e6e9;

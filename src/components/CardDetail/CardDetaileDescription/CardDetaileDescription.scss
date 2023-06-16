@@ -5,13 +5,12 @@
         display: flex;
         justify-content: center;
     }
-
+    
     &__container {
         display: flex;
         gap: 64px;
         width: 100%;
         max-width: 100%;
-        
 
         @media (max-width: 1199px) {
             display: block;

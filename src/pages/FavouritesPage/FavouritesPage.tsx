@@ -41,16 +41,15 @@ export const FavouritesPage = () => {
           </div>
           <Breadcrumbs item={selectedPhone} />
         </div>
-        {phoneId && selectedPhone ? <CardDetailsDescription phone={selectedPhone} />
+        {phoneId && selectedPhone ? <CardDetailsDescription phones={selectedPhone} />
           :
           <>
-            <h1>Favourites</h1>
+            <h1 className="heading--h1">Favourites</h1>
             <p className="favourites-page__amount">{favourites.length} items</p>
-            {favourites.length > 0 ?
+            {favourites.length > 0 &&
               (<div className="favourites-page__items">
                 {favourites.map(favItem => <CardLayout phone={favItem} slug={'/favourites/'} />)}
               </div>)
-              : <p>I dont like anything</p>
             }
           </>}
       </div>
