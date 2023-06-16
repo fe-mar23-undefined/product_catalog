@@ -5,9 +5,12 @@
 @import "./utils/variables";
 
 .App {
-    min-width: 320px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.main__cart-page {
-    margin-top: 25px;
+.main {
+  flex: 1;
 }
