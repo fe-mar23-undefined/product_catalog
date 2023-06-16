@@ -1,0 +1,30 @@
+@import '../../utils/mixins';
+
+.placeholder {
+  height: calc(100vh - 172px);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+
+  @include phone {
+    height: calc(100vh - 316px);
+  }
+  
+  &__wrapper {
+    @include pageBreakPoints;
+  
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -24px
+  }
+
+  &__image {
+    margin: 0 16px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+}
