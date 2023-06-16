@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { getPhones } from '../../api/phones';
+import { Carousel } from '../../components/Carousel';
+import { Phone } from '../../types/Phone';
 import './HomePage.scss';
 
 export const HomePage = () => {
@@ -52,7 +55,6 @@ export const HomePage = () => {
   };
 
   return (
-    <>
     <div className="page__wrapper">
       <h1 className="title">Welcome to Nice Gadgets store!</h1>
 
@@ -119,7 +121,6 @@ export const HomePage = () => {
 
       <Carousel phones={hotPricesPhones} title="Hot prices" />
     </div>
-    </>
   );
 };
 
