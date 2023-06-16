@@ -107,5 +107,5 @@ export const CartPage = () => {
             }
             {isProcessing && <CheckoutModal setLoaderStatus={setIsProcessing} />}
         </section>
-    )
+)
 }
