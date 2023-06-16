@@ -10,8 +10,10 @@ import { CardDetailColorPickerHeader } from '../CardDetailColorPickerHeader/Card
 
 import { CardDetaileDescription } from '../CardDetaileDescription/CardDetailDescription';
 
-
 import { PhoneDetails } from '../../../types/PhoneDetails';
+
+
+import { CardDetailHeader } from '../CardDetailHeader/CardDetailHeader';
 
 
 interface PhoneData {
@@ -20,9 +22,11 @@ interface PhoneData {
 
 export const CardDetailMainPhoto: React.FC<PhoneData> = ({phone}) => {
 
-  const {images, colorsAvailable, capacityAvailable,
+  const {images, colorsAvailable, capacityAvailable, name
 
   } = phone;
+
+  console.log(phone)
 
 
  const mainPhotoLink = `https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${images[0]}`;
@@ -46,6 +50,12 @@ useEffect(() => {
     <div className="img-product-details">
       <div className="img-product-details__container">
 
+      <div className="img-product-details__block-title-phone">
+              <CardDetailHeader title={name}/>
+            </div>
+
+            
+
         <div className="img-product-details__img-prev">
           <CardDetailPhoto images={images} clickedPrevPhoto={clickedPrevPhoto} />
         </div>
@@ -58,6 +68,7 @@ useEffect(() => {
 
         <div className="img-product-details__phone-details">
           <div className="img-product-details__block">
+
 
 
             <div className="img-product-details__block-header">

@@ -43,7 +43,7 @@ export const CardPhoneInfo: React.FC<Props> = ({phones, isFullPrices}) => {
         <div className="card-product__add-prod-to-card">
 
         <button
-          className={isBasket ? 'card-product__add-to-card' : 'card-product__add-to-card--active'}
+          className={isBasket ? 'card-product__add-to-card-new' : 'card-product__add-to-card-new--active'}
           onClick={handleClickToBasket}
         >
           {isBasket ? 'Add to card' : 'Added'}
@@ -51,7 +51,7 @@ export const CardPhoneInfo: React.FC<Props> = ({phones, isFullPrices}) => {
 
         <button
          onClick={handleClick}
-          className={`card-product__save-product ${isSelected ? 'card-product__save-product--selection' : ''}`}
+          className={`card-product__save-product-new ${isSelected ? 'card-product__save-product-new--selection' : ''}`}
         >
         </button>
 

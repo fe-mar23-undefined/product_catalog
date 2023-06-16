@@ -21,18 +21,11 @@ export const CardDetailColorPicker: React.FC<Props> = ({ colors }) => {
         setPhoneColor(getFirstColor)
       }
 
-  }, [colors, getFirstColor ])
-
-
-
+  }, [colors, getFirstColor ]);
 
   return (
     <div className="color-picker">
       <div className="color-picker__container">
-        {/* <div className="color-picker__block-one">
-          <div className="color-picker__header">Available colors</div>
-          <div className="color-picker__id-info">ID: 802390</div>
-        </div> */}
         <div className="color-picker__block-two">
           {colors.map((color) => (
             <a

@@ -4,13 +4,24 @@
     display: grid;
     gap: 7px;
 
+    img {
+
+        @media (min-width: 640px) and (max-width: 1199px) {
+            width: 35px;
+            height: 35px;
+       }
+
+
+
+    }
+
     @media (max-width: 639px) {
          display: grid;
         grid-template-columns: repeat(5, 51px);
         grid-template-rows: 34px;
     }
 
-    
+
 
     &__images {
         width: 80px;
