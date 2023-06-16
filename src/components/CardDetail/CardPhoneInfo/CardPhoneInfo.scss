@@ -1,9 +1,12 @@
 .card-product {
     width: 272px;
     border: 3px;
-    padding: 32px;
     background: #ffffff;
     border: 1px solid #e2e6e9;
+
+    &__container {
+        padding-top: 20px;
+    }
 
     &:hover {
         border: 1px solid #e2e6e9;
@@ -13,7 +16,6 @@
     @media (max-width: 639px) {
         width: 288px;
     }
-
 
     &__block {
         height: 250px;
@@ -62,26 +64,26 @@
         flex: 1;
     }
 
+    &__block-details {
+        padding-top: 10px;
+    }
+
     &__details {
         display: flex;
         justify-content: space-between;
         padding-top: 8px;
     }
 
-    &__block-details {
-        padding-top: 46px;
-    }
-
     &__add-prod-to-card {
         display: flex;
         justify-content: space-between;
+        gap: 10px;
     }
 
     &__price {
         color: #313237;
-        font-size: 22px;
+        font-size: 32px;
         font-weight: 800;
-        padding: 8px 0 9.5px;
     }
     &__full-price {
         color: #89939a;
@@ -106,7 +108,7 @@
         margin-top: 8px;
     }
 
-    &__add-to-card {
+    &__add-to-card-new {
         background-color: #313237;
         color: #ffffff;
         width: 263px;
@@ -116,10 +118,6 @@
         text-decoration: none;
         border: 1px solid transparent;
 
-        @media (width: 768px) {
-            width: 130px;
-        }
-
         &:hover {
             cursor: pointer;
         }
@@ -127,15 +125,16 @@
         &--active {
             background-color: #ffffff;
             color: #27ae60;
-            width: 140px;
+            width: 263px;
             padding: 10px;
             text-align: center;
             font-size: 14px;
             text-decoration: none;
             border: 1px solid #b4bdc3;
 
-            @media (width: 768px) {
-                width: 130px;
+            @media (max-width: 640px) {
+                width: 40px;
+                height: 40px;
             }
 
             &:hover {
@@ -144,19 +143,19 @@
         }
     }
 
-    &__add-prod-to-card {
-        padding-top: 45px;
-
-    }
-
-    &__save-product {
+    &__save-product-new {
         width: 48px;
         height: 48px;
-      /*   background-image: url('../../images/icons/Heart.svg'); */
+          background-image: url('../../../images/icons/Heart.svg');
         border: 1px solid #b4bdc3;
         background-repeat: no-repeat;
         background-position: center;
         background-color: #ffffff;
+
+        @media (max-width: 640px) {
+            width: 40px;
+            height: 40px;
+        }
 
         &:hover {
             border: 1px solid #313237;
@@ -164,10 +163,10 @@
         }
 
         &--selection {
-           /*  background-image: url('../../images/icons/Heart-filled.svg'); */
+            background-image: url('../../../images/icons/Heart-filled.svg');
             background-repeat: no-repeat;
-            background-position: center;
             border: 1px solid #e2e6e9;
+            background-size: cover;
         }
     }
 }
