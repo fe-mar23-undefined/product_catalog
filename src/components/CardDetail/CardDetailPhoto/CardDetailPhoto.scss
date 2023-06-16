@@ -5,10 +5,12 @@
     gap: 7px;
 
     @media (max-width: 639px) {
-        display: grid;
+         display: grid;
         grid-template-columns: repeat(5, 51px);
-        grid-template-rows: 41px;
+        grid-template-rows: 34px;
     }
+
+    
 
     &__images {
         width: 80px;
