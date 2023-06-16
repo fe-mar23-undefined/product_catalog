@@ -139,20 +139,31 @@
   height: 432px;
   width: 1136px;
   margin-bottom: 90px;
-}
+  overflow: hidden;
+
 
 .arrow {
+  display: flex;
+  background: url("../../images/icons/arrow-dark.png");
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100%;
-  background-color: #ca567b;
+  border: 1px solid #B4BDC3;
   width: 32px;
+
+  &--left {
+    transform: scaleX(-1);
+  }
 }
 
 .content {
-  background-color: #fad7bc;
-  height: 100%;
-  width: 1050px;
+  // background: url(https://github.com/mate-academy/product_catalog/blob/main/public/img/banner-phones.png?raw=true);
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  width: 1040px;
 
   &__image {
-    width: 1050px;
+    width: 1040px;
+    min-height: 432px;
   }
 }
