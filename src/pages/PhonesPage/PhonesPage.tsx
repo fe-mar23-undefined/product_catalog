@@ -12,7 +12,7 @@ import { Breadcrumbs } from "../../components/Breadcrumbs";
 
 import { Loader } from '../../components/Loader/Loader';
 
-import { CardDetailMainPhoto } from "../../components/CardDetail/CardDetailMainPhoto/CardDetailMainPhoto";
+import { CardPhoto } from "../../components/Card-Details/Card-phone/CardPhoto";
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([])
@@ -143,7 +143,7 @@ export const PhonesPage = () => {
         </div>
         {phoneId && selectedPhone ?
         <>
-        <CardDetailMainPhoto phone={selectedPhone}/>
+        <CardPhoto phone={selectedPhone}/>
         </>
           :
         <>
@@ -228,3 +228,4 @@ export const PhonesPage = () => {
     </>
   )
 }
+

@@ -5,7 +5,7 @@ import { getOnePhone } from "../../api/phones";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { Link, useParams } from "react-router-dom";
 import { PhoneDetails } from "../../types/PhoneDetails";
-import { CardDetailsDescription } from "../../components/CardDetailsDescription";
+import { CardPhoneDescription } from "../../components/Card-Details/CardPhoneDescription/CardPhoneDescription";
 import './FavouritesPage.scss';
 
 
@@ -41,7 +41,7 @@ export const FavouritesPage = () => {
           </div>
           <Breadcrumbs item={selectedPhone} />
         </div>
-        {phoneId && selectedPhone ? <CardDetailsDescription phones={selectedPhone} />
+        {phoneId && selectedPhone ? <CardPhoneDescription phones={selectedPhone} />
           :
           <>
             <h1 className="heading--h1">Favourites</h1>

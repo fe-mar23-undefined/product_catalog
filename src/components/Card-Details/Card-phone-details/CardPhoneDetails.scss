@@ -1,0 +1,207 @@
+.product-elem {
+    &__container {
+        max-width: 320px;
+    }
+
+    &__header-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__header-elem {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        color: #89939a;
+        margin-top: 24px;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    &__colors-elem {
+        display: flex;
+        gap: 9px;
+        padding-top: 8px;
+    }
+
+    &__colors {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #e2e6e9;
+        box-sizing: border-box;
+        outline: 3px solid white;
+        outline-offset: -4px;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        &--isActive {
+            border: 1px solid #313237;
+            display: block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            outline: 3px solid white;
+            outline-offset: -4px;
+        }
+    }
+
+    &__line-divader {
+        border: 1px solid #e2e6e9;
+        margin-top: 24px;
+    }
+
+    &__capacity-container {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    &__capacity-elem {
+        padding-top: 8px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        color: #ffffff;
+        background-color: #313237;
+        border: 1px solid #b4bdc4;
+        padding: 4px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &--isActive {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 21px;
+            text-align: center;
+            border: 1px solid #B4BDC3;
+            padding: 4px;
+            color: #313237;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__price {
+        height: 89px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__full-price {
+        color: #313237;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 41px;
+    }
+
+    &__discount-price {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 28px;
+        text-decoration-line: line-through;
+        color: #89939a;
+        margin-left: 8px;
+    }
+
+    &__buy-btns {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__add-to-card {
+        width: 263px;
+        height: 48px;
+        color: #ffffff;
+        background: #313237;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--isActive {
+            background-color: #ffffff;
+            color: #27ae60;
+            width: 263px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            border: 1px solid #b4bdc3;
+
+            @media (max-width: 640px) {
+                width: 40px;
+                height: 40px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__add-to-fav {
+        background-image: url('../../../images/icons/Heart.svg');
+        border: 1px solid #b4bdc4;
+        width: 48px;
+        height: 48px;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &:hover {
+            border: 1px solid #313237;
+        }
+
+        &--isActive {
+            background-image: url('../../../images/icons/Heart-filled.svg');
+            border: 1px solid #e2e6e9;
+            width: 48px;
+            height: 48px;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            &:hover {
+                border: 1px solid #313237;
+            }
+        }
+    }
+
+    &__capacity-phone-details {
+        margin-top: 32px;
+    }
+
+    &__detail {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 8px;
+    }
+
+    &__elem-name {
+        color: #89939a;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    &__elem-details {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: right;
+        color: #313237;
+    }
+}
