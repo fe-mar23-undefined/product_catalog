@@ -1,3 +1,5 @@
+@import '../../../utils//mixins';
+
 .product-elem {
     &__container {
         max-width: 320px;
@@ -14,7 +16,6 @@
         font-size: 12px;
         line-height: 15px;
         color: #89939a;
-        margin-top: 24px;
         display: flex;
         align-items: flex-end;
     }
@@ -37,6 +38,7 @@
         &:hover {
             cursor: pointer;
             opacity: 0.7;
+            border: 1px solid #b4bdc4;
         }
 
         &--isActive {
@@ -84,7 +86,7 @@
             font-size: 14px;
             line-height: 21px;
             text-align: center;
-            border: 1px solid #B4BDC3;
+            border: 1px solid #b4bdc3;
             padding: 4px;
             color: #313237;
             &:hover {
@@ -105,6 +107,7 @@
         font-weight: 800;
         font-size: 32px;
         line-height: 41px;
+        min-width: 75px;
     }
 
     &__discount-price {
@@ -130,6 +133,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @include tablet {
+            max-width: 80%;
+        }
+
+        @include phone {
+            max-width: 80%;
+        }
 
         &--isActive {
             background-color: #ffffff;
@@ -203,5 +214,9 @@
         line-height: 15px;
         text-align: right;
         color: #313237;
+    }
+
+    &__elem-capacity {
+        margin-top: 24px;
     }
 }

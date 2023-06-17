@@ -2,7 +2,6 @@
     max-width: 442px;
 
     &__container {
-        /*  width: 442px; */
         display: grid;
         grid-template-columns: 80px 442px;
         gap: 40px;
@@ -32,6 +31,7 @@
             height: 51px;
             display: flex;
             justify-items: center;
+            margin-top: 22px;
         }
 
         @media (min-width: 640px) and (max-width: 1199px) {

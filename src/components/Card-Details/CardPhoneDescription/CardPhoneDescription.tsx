@@ -1,6 +1,5 @@
 
 import { PhoneDetails } from '../../../types/PhoneDetails';
-import { useEffect } from 'react';
 
 import '../CardPhoneDescription/CardPhoneDescription.scss'
 
@@ -14,16 +13,10 @@ interface description {
 }
 
 export const CardPhoneDescription: React.FC<Props> = ({ phones }) => {
-  const {screen, resolution, processor, ram, camera, zoom, cell, description, memory} = phones;
+
+  const {screen, resolution, processor, ram, camera, zoom, cell, description, capacity} = phones;
 
   const cells = phones.cell.map((item) => `${item}`).join(', ');
-
-  useEffect(() => {
-
-    console.log(phones, 'kkkkk');
-  }, [phones]);
-
-  console.log(phones, 'dfgdfdfdf');
 
 
 return (
@@ -36,7 +29,7 @@ return (
         About
       </h2>
 
- 
+
       {description.map((item: description) => (
             <div className="card-details__element" key={item.title}>
               <h3 className="card-details__element-header">{item.title}</h3>
@@ -75,7 +68,7 @@ return (
 
         <div className="card-details__phone-details">
             <span className="card-details__property">Built in memory</span>
-            <span className="card-details__specs">{memory}</span>
+            <span className="card-details__specs">{capacity}</span>
         </div>
 
         <div className="card-details__phone-details">

@@ -15,4 +15,5 @@ priceRegular: number,
 priceDiscount: number,
 capacityAvailable: string[],
 memory: string,
+id: string,
 }

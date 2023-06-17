@@ -143,7 +143,7 @@ export const PhonesPage = () => {
         </div>
         {phoneId && selectedPhone ?
         <>
-        <CardPhoto phone={selectedPhone}/>
+        <CardPhoto phone={selectedPhone} />
         </>
           :
         <>

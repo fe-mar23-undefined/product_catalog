@@ -1,68 +1,77 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo, useContext, useEffect } from 'react';
+import { useGlobalContext } from '../../../context/GlobalContextProvider';
 import '../../../components/Card-Details/Card-phone-details/CardPhoneDetails.scss';
 
 import { PhoneDetails } from '../../../types/PhoneDetails';
-
 
 interface Props {
     phone: PhoneDetails;
 }
 
-
-
 export const CardPhoneDetails:  React.FC<Props> = ( {phone} ) => {
 
-    const {colorsAvailable, capacityAvailable, priceDiscount, priceRegular, screen, resolution, processor, ram
+    const {colorsAvailable, capacityAvailable, priceDiscount, priceRegular, screen, resolution, processor, ram,
 
      } = phone;
 
-     const [addedToFavorites, IsAddToFavorites] = useState(false);
-     const [addedToBasket, IsAddedToBasket] = useState(false);
-     const [pickedCapacity, IsPickedCapacity] = useState(capacityAvailable[0]);
-     const [productColor, isProductColor] = useState(colorsAvailable[0])
-     const [regularPrice, isRegularPrice] = useState(priceRegular);
+  const [addedToFavorites, setIsAddToFavorites] = useState(false);
+  const [addedToBasket, setIsAddedToBasket] = useState(false);
+  const [pickedCapacity, setPickedCapacity] = useState(capacityAvailable[0]);
+  const [productColor, setProductColor] = useState(colorsAvailable[0]);
+  const [discountPrice, setDiscountPrice] = useState(priceDiscount);
+  const [regularPrice, setRegularPrice] = useState(priceRegular);
+  const [prevPickedCapacity, setPrevPickedCapacity] = useState('');
 
-     const addToFav = () => {
-        IsAddToFavorites(!addedToFavorites);
-     }
+  const addToFav = () => {
+    setIsAddToFavorites(!addedToFavorites);
+  };
 
-     const addToBasket = () => {
-        IsAddedToBasket(!addedToBasket);
-     }
+  const addToBasket = () => {
+    setIsAddedToBasket(!addedToBasket);
+  };
 
-     const pickCapacity = (value: string ) => {
-        IsPickedCapacity(value);
+  const pickCapacity = (value: string) => {
 
-     }
+    if (value === pickedCapacity) {
+      setPickedCapacity(prevPickedCapacity);
+    } else {
+      setPrevPickedCapacity(pickedCapacity);
+      setPickedCapacity(value);
+    }
+  };
 
-     const pickCololor = (value: string) => {
-      isProductColor(value)
-     }
+  const pickColor = (value: string) => {
+    setProductColor(value);
+  };
 
-     useEffect(() => {
+  useEffect(() => {
+    const clickedCapacity = parseInt(pickedCapacity);
+    const priceDifference = clickedCapacity - parseInt(capacityAvailable[0]);
+    setRegularPrice(priceRegular + priceDifference);
+    const discountPercentage = 0.2;
+    const calculatedDiscountPrice = Math.floor(regularPrice - regularPrice * discountPercentage);
+    setDiscountPrice(calculatedDiscountPrice);
+  }, [pickedCapacity, capacityAvailable, priceRegular, regularPrice]);
 
-      const clickedCapacity = parseInt(pickedCapacity) + 1000;
-      /* isRegularPrice(clickedCapacity) */
+  useEffect(() => {
 
+    const discountPercentage = 0.2;
+    const calculatedDiscountPrice = Math.floor(regularPrice - regularPrice * discountPercentage);
+    setDiscountPrice(calculatedDiscountPrice);
+  }, [regularPrice]);
 
+  const {addToCart, addToFavourites, cart, favourites} = useGlobalContext();
 
-        isRegularPrice(clickedCapacity)
+  const isFavourited = favourites
+  .some(phoneToFind => phoneToFind.id === phone.id);
 
-        console.log(clickedCapacity, regularPrice);
-
-
-      }, [regularPrice, pickedCapacity]);
-
-
-
-
-
-
+const isAddedToCart = cart
+  .some(phoneToFind => phoneToFind.phone.id === phone.id);
 
 return (
 
-    <div className="product-elem">
+  <div className="product-elem">
     <div className="product-elem__container">
 
       <div className="product-elem__elem">
@@ -78,13 +87,14 @@ return (
         <div className="product-elem__colors-elem">
 
             {colorsAvailable
-                .map((color) => (
-                  <div className={productColor === color ? "product-elem__colors--isActive" : "product-elem__colors" }
+              .map((color) => (
+                <div className={productColor === color
+                  ? "product-elem__colors--isActive" : "product-elem__colors" }
                     style={{ background: color }}
                     key={color}
-                    onClick={() => pickCololor(color)}
+                    onClick={() => pickColor(color)}
                   >
-                  </div>
+                </div>
             )
             )}
 
@@ -93,12 +103,9 @@ return (
       <div className="product-elem__line-divader"></div>
         </div>
 
-
       <div className="product-elem__elem-capacity">
 
-
           <h2 className="product-elem__header-elem">Select capacity</h2>
-
           <div className="product-elem__capacity-container">
 
       {capacityAvailable
@@ -118,20 +125,20 @@ return (
         <div className="product-elem__line-divader"></div>
         </div>
 
-
         <div className="product-elem__price">
           <span className="product-elem__full-price">
-            ${priceRegular}
+            ${discountPrice}
           </span>
 
           <span className="product-elem__discount-price">
-            ${priceDiscount}
+            ${regularPrice}
           </span>
         </div>
 
         <div className="product-elem__buy-btns">
       <div
         onClick={addToBasket}
+      /*  onClick={() => addToCart(phone)} */
         className={addedToBasket ?
           "product-elem__add-to-card--isActive"
           : "product-elem__add-to-card"
@@ -139,17 +146,18 @@ return (
 
         {addedToBasket ? 'Added' : 'Add to cart' }
       </div>
+
       <div
         onClick={addToFav}
         className={addedToFavorites ?
-          "product-elem__add-to-fav"
-          : "product-elem__add-to-fav--isActive"}
-      >
-        </div>
+          "product-elem__add-to-fav--isActive"
+          : "product-elem__add-to-fav"}
+       >
+      </div>
+
     </div>
 
-
-        <div className="product-elem__capacity-phone-details">
+    <div className="product-elem__capacity-phone-details">
 
             <div className="product-elem__detail">
             <div className="product-elem__elem-name">
@@ -186,9 +194,9 @@ return (
               {ram}
             </div>
             </div>
-        </div>
-      </div>
-  </div>
+    </div>
 
+   </div>
+  </div>
 )
 }
