@@ -7,6 +7,7 @@
 .page__wrapper {
   @include pageBreakPoints;
 }
+
 .section__category {
   display: flex;
   flex-direction: column;
@@ -59,74 +60,92 @@
 
   &__image {
     object-fit: cover;
+    transition: 0.4s;
+  }
 
-    &--1 {
-      margin: 120px 0 0 90px;
-      width: 302.09px;
-      height: 357.65px;
+  &__product {
+    transition: 0.4s;
+  }
 
-      @include tablet {
-        margin: 80px 0 0 60px;
-        width: 196.15px;
-        height: 232.23px;
-      }
+  &__wrapper:hover .card__image,
+  &__wrapper:hover .card__product {
+    transform: scale(1.1) translateX(16px);
+  }
 
-      @include desktop {
-        margin: 140px 0 0 100px;
-        width: 386px;
-        height: 457px;
-      }
+  &__wrapper--1:hover .card__image,
+  &__wrapper--1:hover .card__product {
+    transform: scale(1.1)translateX(16px);
+  }
+
+  &__image--1 {
+    margin: 120px 0 0 90px;
+    width: 302.09px;
+    height: 357.65px;
+
+    @include tablet {
+      margin: 80px 0 0 60px;
+      width: 196.15px;
+      height: 232.23px;
     }
 
-    &--2 {
-      margin: 200px 0 0 200px;
-      width: 427.3px;
-      height: 427.3px;
+    @include desktop {
+      margin: 140px 0 0 100px;
+      width: 386px;
+      height: 457px;
+    }
+  }
 
-      @include tablet {
-        margin: 140px 0 0 140px;
-        width: 277.45px;
-        height: 277.45px;
-      }
+  &__image--2 {
+    margin: 200px 0 0 200px;
+    width: 427.3px;
+    height: 427.3px;
 
-      @include desktop {
-        margin: 240px 0 0 260px;
-        width: 546px;
-        height: 546px;
-      }
+    @include tablet {
+      margin: 140px 0 0 140px;
+      width: 277.45px;
+      height: 277.45px;
     }
 
-    &--3 {
-      height: 288px;
-      margin: 100px 0 0 420px;
+    @include desktop {
+      margin: 240px 0 0 260px;
+      width: 546px;
+      height: 546px;
+    }
+  }
 
+  &__image--3 {
+    height: 288px;
+    margin: 100px 0 0 420px;
 
-      @include tablet {
-        height: 187px;
-        margin: 80px 0 0 300px;
-      }
+    @include tablet {
+      height: 187px;
+      margin: 80px 0 0 300px;
+    }
 
-      @include desktop {
-        height: 368px;
-        margin: 120px 0 0 560px;
-      }
+    @include desktop {
+      height: 368px;
+      margin: 120px 0 0 560px;
     }
   }
 
   &__item__count {
     font-size: 14px;
     color: #89939A;
-
   }
 
   &__wrapper {
+    text-decoration: none;
 
     @include desktop {
       margin-right: 16px;
     }
 
     @include tablet {
-      margin-right: 16px
+      margin-right: 16px;
+    }
+
+    &--1 {
+      text-decoration: none;
     }
   }
 }
@@ -135,36 +154,102 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  height: 432px;
-  width: 1136px;
-  margin-bottom: 90px;
+  margin-bottom: 18px;
   overflow: hidden;
 
+  @include tablet {
+    height: 216px;
+    width: 568px;
+  }
 
-.arrow {
-  display: flex;
-  background: url("../../images/icons/arrow-dark.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-  border: 1px solid #B4BDC3;
-  width: 32px;
+  @include desktop {
+    height: 432px;
+    width: 1136px;
 
-  &--left {
-    transform: scaleX(-1);
+  }
+
+  .arrow {
+    display: none;
+    background: url("../../images/icons/arrow-dark.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    border: 1px solid #B4BDC3;
+    width: 32px;
+
+    &--left {
+      transform: scaleX(-1);
+    }
+
+    @include tablet {
+      display: flex;
+    }
+
+    @include desktop {
+      display: flex;
+    }
+  }
+
+  .content {
+    width: 100%;
+    height: 320px;
+
+    @include tablet {
+      width: 568px;
+    }
+
+    @include desktop {
+      width: 1040px;
+    }
+
+    &__image {
+      width: 100%;
+      min-height: 320px;
+
+      @include tablet {
+        width: 476px;
+        min-height: 216px;
+        margin-left: 16px;
+      }
+
+      @include desktop {
+        width: 1040px;
+        min-height: 432px;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-.content {
-  // background: url(https://github.com/mate-academy/product_catalog/blob/main/public/img/banner-phones.png?raw=true);
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  width: 1040px;
+.select {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 90px;
+  }
 
-  &__image {
-    width: 1040px;
-    min-height: 432px;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 70px;
   }
 }
+
+.selector {
+  width: 14px;
+  height: 4px;
+  background-color: #E2E6E9;
 }
+
+.selector.is-selected {
+  background-color: #313237;
+}
+
