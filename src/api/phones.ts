@@ -6,6 +6,6 @@ export const getPhones = () => {
   return service.get<Phone[]>('/phones')
 }
 
-export const getOnePhone = (phoneId: string) => {
-  return service.get<PhoneDetails>(`/phones/${phoneId}`)
+export const getSelectedPhones = (phoneId: string) => {
+  return service.get<PhoneDetails[]>(`/phones/${phoneId}`)
 }

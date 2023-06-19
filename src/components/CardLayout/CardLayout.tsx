@@ -29,17 +29,17 @@ export const CardLayout: React.FC<Props> = ({ phone, slug }) => {
   const isAddedToCart = cart
     .some(phoneToFind => phoneToFind.phone.id === phone.id);
 
-    console.log(phone, 'dfdffdffddfd')
-
   return (
     <div className="card-product">
       <div className="card-product__container">
         <div className="card-product__block">
+          <Link to={`${slug}${phoneId}`}>
           <img
             className="card-product__image"
             src={`https://raw.githubusercontent.com/mate-academy/product_catalog/main/public/${image}`}
             alt={name}
           />
+          </Link>
           <p  className="card-product__desription">
             <Link to={`${slug}${phoneId}`}>{name}</Link></p>
         </div>
