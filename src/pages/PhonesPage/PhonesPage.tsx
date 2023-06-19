@@ -1,18 +1,18 @@
 import classNames from "classnames";
 import { useCallback, useEffect, useMemo, useState } from "react"
-import { getOnePhone, getPhones } from "../../api/phones";
+import { getSelectedPhones, getPhones } from "../../api/phones";
 import { Phone } from "../../types/Phone";
 import './PhonesPage.scss';
 import { SelectSort } from "../../components/Select/SelectSort";
 import { Select } from "../../components/Select/Select";
 import { CardLayout } from "../../components/CardLayout";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PhoneDetails } from "../../types/PhoneDetails";
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 
 import { Loader } from '../../components/Loader/Loader';
 
-import { CardPhoto } from "../../components/Card-Details/Card-phone/CardPhoto";
+import { CardDetails } from "../../components/CardDetails";
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Phone[]>([])
@@ -22,22 +22,56 @@ export const PhonesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedPhone, setSelectedPhone] = useState<PhoneDetails | null>(null)
+  const [selectedPhones, setSelectedPhones] = useState<PhoneDetails[]>([])
+  const [selectedPhoneW, setSelectedPhoneW] = useState<Phone | null>(null);
+  const [currentSlug, setCurrentSlug] = useState('');
   const { phoneId } = useParams();
 
 
   const loadSinglePhone = useCallback(async () => {
     try {
-      setIsLoading(true);
       if (phoneId) {
-        const phone = await getOnePhone(phoneId)
-        setSelectedPhone(phone)
+        const phones = await getSelectedPhones(phoneId)
+        setSelectedPhones(phones)
       }
     } catch (error) {
       setHasError(true);
-    } finally {
-      setIsLoading(false);
-    }
+    } 
   }, [phoneId])
+
+
+  useEffect(() => {
+    const newPhone = phones.find(phone => phone.phoneId === currentSlug)
+  
+    if (newPhone) {
+      setSelectedPhoneW(newPhone);
+    }
+  
+    const newDetails = selectedPhones.find(phone => phone.id === currentSlug) 
+  
+    if (newDetails) {
+      setSelectedPhone(newDetails);
+    }
+    
+  }, [currentSlug, selectedPhones, phones])
+
+  const setPhone = (newPhoneId: string) => {
+    setCurrentSlug(newPhoneId)
+  }
+
+
+  useEffect(() => {
+    const selectedOne = selectedPhones.find(phone => phone.id === phoneId);
+
+    if (selectedOne) {
+      setSelectedPhone(selectedOne);
+      const selecetedOneShort = phones.find(phone => phone.phoneId === selectedOne.id)
+      if (selecetedOneShort) {
+        setSelectedPhoneW(selecetedOneShort);
+      }
+    }
+
+  }, [selectedPhones, phoneId, phones])
 
   useEffect(() => {
     loadSinglePhone();
@@ -141,9 +175,15 @@ export const PhonesPage = () => {
           </div>
           <Breadcrumbs item={selectedPhone} />
         </div>
-        {phoneId && selectedPhone ?
+        {phoneId && selectedPhone && selectedPhoneW ?
         <>
-        <CardPhoto phone={selectedPhone} />
+        <CardDetails 
+          phone={selectedPhone} 
+          shortPhone={selectedPhoneW}
+          selectedPhones={selectedPhones}
+          setPhone={setPhone}
+          phones={phones}
+        />
         </>
           :
         <>

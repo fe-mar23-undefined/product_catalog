@@ -16,4 +16,5 @@ priceDiscount: number,
 capacityAvailable: string[],
 memory: string,
 id: string,
+color: string,
 }
