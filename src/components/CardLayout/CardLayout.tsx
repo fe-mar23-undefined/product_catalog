@@ -11,12 +11,12 @@ interface Props {
 }
 
 export const CardLayout: React.FC<Props> = ({ phone, slug }) => {
-  const { image, 
-    price, 
-    fullPrice, 
-    screen, 
-    ram, 
-    name, 
+  const { image,
+    price,
+    fullPrice,
+    screen,
+    ram,
+    name,
     capacity,
     phoneId,
    } = phone;
@@ -28,6 +28,8 @@ export const CardLayout: React.FC<Props> = ({ phone, slug }) => {
 
   const isAddedToCart = cart
     .some(phoneToFind => phoneToFind.phone.id === phone.id);
+
+    console.log(phone, 'dfdffdffddfd')
 
   return (
     <div className="card-product">

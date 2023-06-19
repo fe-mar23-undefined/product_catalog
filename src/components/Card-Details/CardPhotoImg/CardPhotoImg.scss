@@ -1,0 +1,188 @@
+.product-photo {
+    max-width: 442px;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 80px 442px;
+        gap: 40px;
+
+        @media (max-width: 639px) {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-rows: 1fr 80px;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) and (max-width: 1199px) {
+            grid-template-columns: 34px 442px;
+            gap: 0px;
+        }
+
+        @media (max-width: 639px) {
+            width: 60%;
+            gap: 0px;
+        }
+    }
+
+    &__photo-prev {
+        height: 80px;
+
+        @media (max-width: 639px) {
+            width: 51px;
+            height: 51px;
+            display: flex;
+            justify-items: center;
+            margin-top: 22px;
+        }
+
+        @media (min-width: 640px) and (max-width: 1199px) {
+            width: 35px;
+            height: 0px;
+        }
+    }
+
+    &__photo-prev-container {
+        width: 80px;
+        height: 80px;
+        display: flex;
+
+        @media (min-width: 640px) and (max-width: 1199px) {
+            width: 28px;
+            height: 28px;
+            gap: 5px;
+            display: flex;
+        }
+    }
+
+    &__photo-prev {
+        width: 80px;
+        object-fit: contain;
+
+        @media (max-width: 639px) {
+            width: 100%;
+            height: 47px;
+            align-items: center;
+            display: flex;
+        }
+    }
+
+    &__photo-prev-elem {
+        display: block;
+        gap: 10px;
+        margin-top: 6px;
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        border: 1px solid #e2e6e9;
+        padding: 3px;
+
+        @media (max-width: 639px) {
+            height: 47px;
+            display: flex;
+            margin-left: 4px;
+        }
+
+        @media (min-width: 640px) and (max-width: 1199px) {
+            width: 34px;
+            height: 34px;
+            align-items: center;
+            display: flex;
+        }
+
+        @media (max-width: 639px) {
+            width: 49px;
+            height: 47px;
+        }
+
+        &--isActive {
+            border: 1px solid #313237;
+            display: block;
+            gap: 10px;
+            margin-top: 6px;
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            padding: 3px;
+
+            @media (max-width: 639px) {
+                width: 49px;
+                height: 47px;
+            }
+
+            @media (min-width: 640px) and (max-width: 1199px) {
+                width: 34px;
+                height: 34px;
+                align-items: center;
+                display: flex;
+            }
+
+            img {
+                width: 70px;
+                height: 70px;
+                object-fit: contain;
+                display: block;
+                margin: auto;
+
+                @media (max-width: 639px) {
+                    width: 50px;
+                    height: 50px;
+                    object-fit: contain;
+                }
+
+                @media (min-width: 640px) and (max-width: 1199px) {
+                    width: 28px;
+                    height: 28px;
+                    gap: 10px;
+                }
+            }
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+
+            @media (max-width: 639px) {
+                width: 50px;
+                height: 50px;
+                object-fit: contain;
+            }
+
+            @media (min-width: 640px) and (max-width: 1199px) {
+                width: 28px;
+                height: 28px;
+                gap: 10px;
+            }
+        }
+    }
+
+    &__photo-main {
+        width: 442px;
+        max-height: 442px;
+        object-fit: contain;
+
+        @media (max-width: 639px) {
+            grid-row: 1 / 2;
+            width: 272px;
+            max-height: 272px;
+        }
+
+        img {
+            width: 442px;
+            height: 442px;
+            object-fit: contain;
+
+            @media (max-width: 319px) {
+                width: 100%;
+                height: 100%;
+            }
+
+            @media (min-width: 320px) and (max-width: 1199px) {
+                width: 272px;
+                height: 272px;
+                object-fit: contain;
+            }
+        }
+    }
+}
